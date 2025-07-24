@@ -103,3 +103,97 @@ Upaya untuk menyangkal sebuah argumen dengan cara menyerang karakter, motif, ata
 Karakter atau keadaan seseorang secara logis tidak relevan dengan validitas atau kebenaran klaim yang mereka buat. Argumen dinilai dari Logos (logika), bukan Ethos (kredibilitas pembicara).
 
 #### Contoh Konkret
+```
+
+"Bagaimana bisa kita percaya pada saran finansial dari dia? Dia saja pernah bangkrut."
+
+```
+
+#### Strategi Sanggahan
+> "Karakter atau keadaan saya tidak relevan. Mari kita kembali membahas validitas dan bukti mengenai [topik debat]."
+
+---
+
+### 3.2 FALLACY_STRAWMAN: Strawman
+
+- **ID Unik**: `FALLACY_STRAWMAN`
+- **Alias**: Argumen Orang-orangan Sawah
+- **Kategori Fungsional**: Kesesatan Ambiguitas
+
+#### Definisi
+Salah merepresentasikan, menyederhanakan, atau melebih-lebihkan argumen lawan untuk membuatnya lebih mudah diserang.
+
+#### Analisis Penalaran (Mengapa Ini Sesat)
+Menghindari perdebatan yang jujur dengan menyerang karikatur argumen, bukan argumen yang sebenarnya. Ini adalah bentuk ketidakjujuran intelektual.
+
+#### Contoh Konkret
+```
+
+A: "Saya pikir kita perlu meningkatkan anggaran untuk program daur ulang."
+B: "Jadi, Anda ingin menghabiskan semua uang negara untuk sampah dan membiarkan sekolah kekurangan dana?"
+
+```
+
+#### Strategi Sanggahan
+> "Itu bukanlah posisi saya. Izinkan saya mengklarifikasi apa yang sebenarnya saya maksud terkait program daur ulang."
+
+---
+
+### 3.3 FALLACY_HASTY_GEN: Hasty Generalization
+
+- **ID Unik**: `FALLACY_HASTY_GEN`
+- **Alias**: Generalisasi Terburu-buru
+- **Kategori Fungsional**: Kesesatan Presumsi Lemah
+
+#### Definisi
+Membuat kesimpulan umum dari sampel yang terlalu kecil atau tidak representatif.
+
+#### Analisis Penalaran (Mengapa Ini Sesat)
+Premis (contoh spesifik) terlalu lemah untuk mendukung kesimpulan yang luas (generalisasi). Ini adalah lompatan induktif yang tidak dapat dibenarkan.
+
+#### Contoh Konkret
+```
+
+"Saya bertemu dua orang dari kota X dan keduanya tidak ramah. Berarti semua orang di kota X tidak ramah."
+
+```
+
+#### Strategi Sanggahan
+> "Apakah dua contoh yang Anda temui sudah cukup untuk mewakili seluruh populasi kota tersebut? Mungkin kita memerlukan data yang lebih banyak."
+
+---
+*(Struktur yang sama akan diterapkan untuk kesesatan lainnya: Slippery Slope, Circular Reasoning, False Dilemma, Red Herring, Appeal to Authority, dan Bandwagon.)*
+
+---
+
+## Bagian 4: Panduan Implementasi Pedagogis untuk Chatbot
+
+Bagian ini menjembatani basis pengetahuan teoretis dan aplikasi praktisnya dalam chatbot untuk tujuan edukasi.
+
+### 4.1 Merancang Umpan Balik AI yang Konstruktif
+
+- **Prinsip Utama**: Umpan balik harus tepat waktu, spesifik, positif, dan mendorong dialog.
+- **Template Umpan Balik Metakognitif (Socratic Questioning)**:
+    - **Untuk Hasty Generalization**: "Anda membuat kesimpulan tentang kelompok besar berdasarkan beberapa contoh. Apa yang membuat Anda merasa contoh itu sudah cukup mewakili?"
+    - **Untuk False Dilemma**: "Anda menyajikan situasi ini seolah hanya ada dua pilihan. Apakah mungkin ada jalan tengah atau opsi lain yang belum kita pertimbangkan?"
+
+### 4.2 Evolusi `logicScore`: Penilaian Argumen Berbasis Semantik
+
+1.  **Fase 1 (Awal)**: Deteksi kata kunci ("karena", "sebab") dan pola kesesatan sederhana berbasis string.
+2.  **Fase 2 (Menengah)**: Menggunakan *sentence embeddings* untuk mengukur relevansi semantik antara premis dan kesimpulan, memberikan skor yang lebih bernuansa.
+3.  **Fase 3 (Jangka Panjang)**: Melatih model klasifikasi khusus pada dataset argumen beranotasi untuk mengidentifikasi validitas dan kesesatan secara lebih akurat.
+
+### 4.3 Mengintegrasikan Gamifikasi dengan Tujuan Pembelajaran
+
+- **Rekomendasi**:
+    - Berikan poin pengalaman (XP) untuk identifikasi kesesatan yang benar.
+    - Buat *quest* atau tantangan yang berfokus pada penggunaan keterampilan logika tertentu.
+    - Berikan lencana (badges) yang bermakna setelah pengguna menunjukkan penguasaan konsep tertentu.
+
+### 4.4 Pertimbangan Etis dan Aksesibilitas
+
+- **Prioritas**:
+    - **Privasi Data**: Pastikan input pengguna dianonimkan.
+    - **Bias AI**: Waspada terhadap bias dalam data pelatihan yang bisa membuat AI salah mengidentifikasi argumen dari kelompok tertentu.
+    - **Aksesibilitas**: Rancang aplikasi yang ringan dan hemat data.
+    - **Mendorong Pemikiran Mandiri**: AI harus bertindak sebagai fasilitator, bukan sebagai sumber kebenaran absolut.
