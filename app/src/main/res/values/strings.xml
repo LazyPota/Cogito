@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Cogito</string>
     <string name="home">Home</string>
+    <string name="create_an_account">Create An Account</string>
+    <string name="holder_username">Holder_username</string>
+    <string name="_1200_xp">1200 XP</string>
 </resources>

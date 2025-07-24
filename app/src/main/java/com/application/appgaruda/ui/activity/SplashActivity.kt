@@ -2,33 +2,30 @@ package com.application.appgaruda.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.application.appgaruda.R
 import com.application.appgaruda.helper.SessionManager
+
 
 class SplashActivity : AppCompatActivity() {
 
+    private lateinit var sessionManager: SessionManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
+        sessionManager = SessionManager(this)
 
-        val Session = SessionManager(this)
+        // Bisa ditambah animasi / delay jika perlu
+        checkLoginStatus()
+    }
 
-        if (Session.isLoggedIn()) {
+    private fun checkLoginStatus() {
+        if (sessionManager.isLoggedIn()) {
+            // Kalau udah login, langsung ke HomeActivity
             startActivity(Intent(this, MainActivity::class.java))
-            finish()
         } else {
+            // Belum login, arahkan ke LoginActivity
             startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         }
+        finish() // biar splash gak bisa balik pakai tombol back
     }
 }

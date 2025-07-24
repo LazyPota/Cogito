@@ -8,14 +8,14 @@
     tools:context=".ui.fragment.profile.ProfileFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="56dp"
         android:fontFamily="@font/inter_bold"
-        android:text="Profle"
+        android:text="Profile"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +31,7 @@
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textview">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/avatarImageView"
@@ -46,7 +46,7 @@
             app:shapeAppearanceOverlay="@style/CircleImageView" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_username_holder"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
@@ -66,7 +66,7 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/avatarImageView"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_username_holder" />
 
         <ImageView
             android:id="@+id/imageView"

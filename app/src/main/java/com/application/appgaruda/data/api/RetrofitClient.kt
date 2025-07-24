@@ -1,17 +1,17 @@
 package com.application.appgaruda.data.api
 
-import com.application.appgaruda.data.api.service.UserService
+import com.application.appgaruda.data.api.service.ApiService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
-    private const val BASE_URL = "https://yourapi.com/api/"
+    private const val BASE_URL = "http://10.0.2.2:3000/"
 
-    val UserService: UserService by lazy {
+    val apiService: ApiService by lazy {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(UserService::class.java)
+            .create(ApiService::class.java)
     }
 }
