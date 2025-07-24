@@ -1,260 +1,260 @@
-## 1 Ad Hominem (Serangan Personal)
+## 1. Ad Hominem (Personal Attack)
 ### ID & Alias
-- FALLACY_AD_HOMINEM; Serangan Pribadi, Argumentum ad Hominem.
+- FALLACY_AD_HOMINEM; Personal Attack, Argumentum ad Hominem.
 
-### Kategori Fungsional
-- Kesesatan Relevansi.
+### Functional Category
+- Fallacy of Relevance.
 
-### Definisi
-- Upaya untuk menyangkal atau mendiskreditkan sebuah argumen dengan cara menyerang karakter, motif, afiliasi, atau atribut pribadi dari orang yang membuat argumen, alih-alih menyerang substansi dari argumen itu sendiri.[17, 21]
+### Definition
+- An attempt to refute or discredit an argument by attacking the character, motive, affiliation, or other personal attributes of the person making the argument, rather than attacking the substance of the argument itself.[17, 21]
 
-### Analisis Penalaran (Mengapa Ini Sesat)
-- Kesesatan ini terjadi karena karakter, keadaan, atau motif seseorang secara logis tidak relevan dengan kebenaran atau kesalahan klaim yang mereka buat. Sebuah argumen harus dinilai berdasarkan kekuatan premis dan validitas penalarannya (Logos), bukan berdasarkan siapa yang menyampaikannya (Ethos).[2, 13] Menyerang kredibilitas seseorang tidak secara otomatis membatalkan logika argumen mereka.
+### Reasoning Analysis (Why It's Fallacious)
+- This fallacy occurs because a person's character, circumstances, or motives are logically irrelevant to the truth or falsehood of the claim they are making. An argument should be evaluated based on the strength of its premises and the validity of its reasoning (Logos), not on who is presenting it (Ethos).[2, 13] Attacking someone's credibility does not automatically invalidate the logic of their argument.
 
-### Sub-Tipe
-- **Abusive Ad Hominem:** Serangan langsung yang menghina atau merendahkan karakter lawan bicara. Contoh: "Kamu bodoh, jadi semua yang kamu katakan pasti salah.".[19, 24]
-- **Circumstantial Ad Hominem:** Menyerang keadaan atau situasi lawan bicara, dengan menyiratkan bahwa mereka memiliki kepentingan pribadi dalam argumen tersebut. Contoh: "Tentu saja kamu mendukung pembangunan pabrik itu, kamu kan dapat untung dari sana.".[16, 19]
-- **Tu Quoque ("Kamu Juga"):** Menolak argumen dengan menuduh lawan bicara melakukan hipokrisi atau tidak konsisten dengan argumen yang disampaikannya. Contoh: "Ayah menasihatiku untuk tidak merokok, padahal dia sendiri perokok berat.".[21]
+### Sub-Types
+- **Abusive Ad Hominem:** A direct insult or disparagement of the opponent's character. Example: "You are an idiot, so everything you say must be wrong.".[19, 24]
+- **Circumstantial Ad Hominem:** Attacking the opponent's circumstances, implying they have a vested interest in the argument. Example: "Of course you support the construction of that factory; you stand to profit from it.".[16, 19]
+- **Tu Quoque ("You Too"):** Rejecting an argument by accusing the opponent of hypocrisy or of not being consistent with the argument they are presenting. Example: "My father advised me not to smoke, but he himself is a heavy smoker.".[21]
 
-### Contoh Konkret
-- **Konteks Umum:** "Bagaimana bisa kita percaya pada saran finansial dari dia? Dia saja pernah bangkrut."
-- **Konteks Indonesia:** "Kamu bicara pentingnya kejujuran karena belum pernah rangking satu, sih!".[25, 26] Atau, dalam konteks politik: "Kita tidak perlu mendengarkan kritiknya tentang kebijakan pemerintah, dia kan dari partai oposisi.".[16, 27]
+### Concrete Examples
+- **General Context:** "How can we trust his financial advice? He once went bankrupt."
+- **Indonesian Context:** "You talk about the importance of honesty because you've never been number one in class!".[25, 26] Or, in a political context: "We don't need to listen to his criticism of government policy; he's from the opposition party.".[16, 27]
 
-### Deteksi & Respons dalam Debat
-- **Sinyal Peringatan:** Frasa yang berfokus pada identitas, latar belakang, atau motif pembicara ("Orang seperti Anda...", "Pantas saja Anda bilang begitu...", "Lihat saja siapa dia...").
-- **Strategi Sanggahan:**
-    - **Identifikasi dan Pisahkan:** Dengan tenang tunjukkan bahwa fokus argumen telah bergeser. "Saya perhatikan diskusi kita mulai beralih dari topik ke pembahasan mengenai pribadi saya.".[28]
-    - **Abaikan dan Alihkan Kembali (Redirect):** "Karakter atau keadaan saya tidak relevan dengan validitas argumen ini. Mari kita kembali membahas bukti mengenai [topik debat].".[18, 20]
+### Detection & Response in Debate
+- **Warning Signs:** Phrases that focus on the speaker's identity, background, or motives ("People like you...", "It's no wonder you'd say that...", "Look at who he is...").
+- **Counter-Strategies:**
+    - **Identify and Separate:** Calmly point out that the focus of the argument has shifted. "I've noticed our discussion has started to shift from the topic to my character.".[28]
+    - **Ignore and Redirect:** "My character or circumstances are not relevant to the validity of this argument. Let's get back to discussing the evidence regarding [debate topic].".[18, 20]
 
-### Rekomendasi untuk Umpan Balik AI
-- **Frasa Umpan Balik Edukatif:** "Poin yang Anda sampaikan menyentuh karakter lawan bicara. Dalam debat yang kuat, argumen dinilai dari logikanya, bukan dari siapa yang mengatakannya. Bagaimana kita bisa merumuskan ulang poin ini agar fokus pada substansi argumennya?"
-- **Kriteria logicScore:** Penggunaan Ad Hominem harus memberikan penalti pada logicScore karena ini adalah pelanggaran mendasar terhadap logika debat. Ini juga dapat mengurangi sentimentScoreBonus jika bahasanya kasar.
+### Recommendations for AI Feedback
+- **Educative Feedback Phrase:** "The point you're making touches on your opponent's character. In a strong debate, arguments are judged by their logic, not by who says them. How can we rephrase this point to focus on the substance of the argument?"
+- **logicScore Criteria:** The use of Ad Hominem should penalize the logicScore as it is a fundamental violation of debate logic. It can also reduce the sentimentScoreBonus if the language is abusive.
 
 ---
 
-## 2 Strawman (Orang-orangan Sawah)
+## 2. Strawman
 ### ID & Alias
-- FALLACY_STRAWMAN; Argumen Orang-orangan Sawah.
+- FALLACY_STRAWMAN; Strawman Argument.
 
-### Kategori Fungsional
-- Kesesatan Ambiguitas.
+### Functional Category
+- Fallacy of Ambiguity.
 
-### Definisi
-- Terjadi ketika seseorang salah merepresentasikan, menyederhanakan, atau melebih-lebihkan argumen lawan bicaranya untuk membuatnya terdengar lebih lemah atau ekstrem, kemudian menyerang versi yang terdistorsi tersebut alih-alih argumen yang sebenarnya.[17, 14]
+### Definition
+- Occurs when a person misrepresents, simplifies, or exaggerates their opponent's argument to make it seem weaker or more extreme, and then attacks this distorted version instead of the actual argument.[17, 14]
 
-### Analisis Penalaran (Mengapa Ini Sesat)
-- Kesesatan ini menghindari perdebatan yang jujur. Dengan menciptakan "orang-orangan sawah" (versi argumen yang lebih mudah diserang), pelaku kesesatan ini memberikan ilusi bahwa mereka telah membantah posisi lawan, padahal mereka hanya mengalahkan karikatur yang mereka ciptakan sendiri.[17, 19] Ini adalah pelanggaran terhadap prinsip amal (principle of charity), yang menuntut kita untuk menafsirkan argumen lawan dalam bentuknya yang paling kuat.
+### Reasoning Analysis (Why It's Fallacious)
+- This fallacy avoids honest debate. By creating a "strawman" (an easier version of the argument to attack), the perpetrator gives the illusion of having refuted the opponent's position, when in fact they have only defeated a caricature they created themselves.[17, 19] This is a violation of the principle of charity, which requires us to interpret an opponent's argument in its strongest possible form.
 
-### Contoh Konkret
-- **Konteks Umum:**
-    - A: "Saya pikir kita perlu meningkatkan anggaran untuk pendidikan publik."
-    - B: "Jadi, Anda ingin memotong anggaran pertahanan dan membuat negara kita rentan terhadap serangan?".[19]
-- **Konteks Indonesia:**
-    - A: "Menurut saya, pembangunan infrastruktur yang berlebihan bisa merusak alam."
-    - B: "Oh, jadi Anda anti-pemerintah dan tidak mau negara kita maju?".[27, 29]
+### Concrete Examples
+- **General Context:**
+    - A: "I think we need to increase the budget for public education."
+    - B: "So you want to cut the defense budget and leave our country vulnerable to attack?".[19]
+- **Indonesian Context:**
+    - A: "In my opinion, excessive infrastructure development can harm the environment."
+    - B: "Oh, so you're anti-government and don't want our country to progress?".[27, 29]
 
-### Deteksi & Respons dalam Debat
-- **Sinyal Peringatan:** Frasa seperti "Jadi, pada dasarnya Anda mengatakan bahwa...", "Dengan kata lain, Anda ingin...", atau ringkasan argumen Anda yang terdengar tidak akurat dan berlebihan.
-- **Strategi Sanggahan:**
-    - **Klarifikasi dengan Tegas:** "Itu bukanlah posisi saya." atau "Saya rasa Anda telah salah memahami argumen saya.".[20]
-    - **Nyatakan Ulang Posisi Asli:** "Izinkan saya mengklarifikasi apa yang sebenarnya saya maksud. Poin utama saya adalah...".[19]
-    - **Tunjukkan Perbedaannya:** "Argumen yang Anda serang adalah bahwa [versi strawman], sedangkan argumen saya yang sebenarnya adalah [posisi asli]. Keduanya sangat berbeda."
+### Detection & Response in Debate
+- **Warning Signs:** Phrases like "So, basically you're saying that...", "In other words, you want...", or a summary of your argument that sounds inaccurate and exaggerated.
+- **Counter-Strategies:**
+    - **Clarify Firmly:** "That is not my position." or "I think you have misunderstood my argument.".[20]
+    - **Restate Original Position:** "Allow me to clarify what I actually meant. My main point is...".[19]
+    - **Point Out the Difference:** "The argument you're attacking is that [strawman version], whereas my actual argument is [original position]. The two are very different."
 
-### Rekomendasi untuk Umpan Balik AI
-- **Frasa Umpan Balik Edukatif:** "Ini adalah sanggahan yang kuat. Namun, sepertinya Anda menyanggah versi argumen yang sedikit berbeda dari yang disampaikan AI. Bisakah kita coba merespons langsung poin utama yang disampaikan AI tadi?"
-- **Kriteria logicScore:** Penggunaan Strawman harus mengurangi logicScore karena menunjukkan kegagalan untuk terlibat dengan argumen lawan secara jujur dan akurat.
+### Recommendations for AI Feedback
+- **Educative Feedback Phrase:** "This is a strong rebuttal. However, it seems you are refuting a slightly different version of the argument than the one the AI presented. Could we try to respond directly to the main point the AI made?"
+- **logicScore Criteria:** The use of a Strawman should reduce the logicScore as it demonstrates a failure to engage with the opponent's argument honestly and accurately.
 
 ---
 
-## 3 Hasty Generalization (Generalisasi Terburu-buru)
+## 3. Hasty Generalization
 ### ID & Alias
-- FALLACY_HASTY_GEN; Generalisasi Berlebihan, Overgeneralization.
+- FALLACY_HASTY_GEN; Overgeneralization.
 
-### Kategori Fungsional
-- Kesesatan Presumsi Lemah.
+### Functional Category
+- Fallacy of Weak Presumption.
 
-### Definisi
-- Membuat kesimpulan umum tentang seluruh kelompok berdasarkan sampel yang terlalu kecil, tidak representatif, atau bias.[17, 14] Ini adalah bentuk penalaran induktif yang cacat.
+### Definition
+- Drawing a general conclusion about an entire group based on a sample that is too small, unrepresentative, or biased.[17, 14] It is a form of flawed inductive reasoning.
 
-### Analisis Penalaran (Mengapa Ini Sesat)
-- Kesimpulan induktif yang kuat memerlukan bukti yang cukup dan representatif. Hasty Generalization melanggar prinsip ini dengan membuat lompatan dari beberapa contoh spesifik (bukti yang tidak cukup) ke klaim universal.[13] Kekuatan argumen induktif terletak pada kualitas dan kuantitas sampelnya.
+### Reasoning Analysis (Why It's Fallacious)
+- A strong inductive conclusion requires sufficient and representative evidence. Hasty Generalization violates this principle by making a leap from a few specific examples (insufficient evidence) to a universal claim.[13] The strength of an inductive argument lies in the quality and quantity of its sample.
 
-### Contoh Konkret
-- **Konteks Umum:** "Saya bertemu dua orang dari kota A, dan keduanya tidak ramah. Berarti semua orang dari kota A memang sombong.".[17]
-- **Konteks Indonesia:** "Tiga kali pacaran sama cowok, tiga-tiganya brengsek. Ah, semua cowok itu sama saja!".[23, 29]
+### Concrete Examples
+- **General Context:** "I met two people from city A, and they were both unfriendly. That means all people from city A are arrogant.".[17]
+- **Indonesian Context:** "I've dated three guys, and all three were jerks. Ah, all men are the same!".[23, 29]
 
-### Deteksi & Respons dalam Debat
-- **Sinyal Peringatan:** Penggunaan kata-kata absolut seperti "semua", "selalu", "tidak pernah", "setiap orang" yang didasarkan pada bukti anekdotal atau terbatas.
-- **Strategi Sanggahan:**
-    - **Pertanyakan Ukuran Sampel:** "Apakah beberapa contoh yang Anda sebutkan sudah cukup untuk membuat kesimpulan tentang seluruh kelompok?".[18]
-    - **Tunjukkan Bukti Tandingan (Counterexample):** "Saya kenal beberapa orang dari kelompok tersebut yang tidak seperti yang Anda gambarkan. Mungkin kesimpulan Anda terlalu luas.".[30]
-    - **Minta Data yang Lebih Komprehensif:** "Apakah ada data atau studi yang lebih luas yang mendukung generalisasi ini, di luar pengalaman pribadi?".[18]
+### Detection & Response in Debate
+- **Warning Signs:** Use of absolute words like "all," "always," "never," "everyone" based on anecdotal or limited evidence.
+- **Counter-Strategies:**
+    - **Question the Sample Size:** "Are the few examples you mentioned enough to draw a conclusion about the entire group?".[18]
+    - **Provide a Counterexample:** "I know several people from that group who are not as you described. Perhaps your conclusion is too broad.".[30]
+    - **Request More Comprehensive Data:** "Is there any broader data or study that supports this generalization, beyond personal experience?".[18]
 
-### Rekomendasi untuk Umpan Balik AI
-- **Frasa Umpan Balik Edukatif:** "Anda membuat kesimpulan yang kuat berdasarkan beberapa contoh. Dalam logika, ini disebut generalisasi. Agar lebih meyakinkan, argumen seperti ini seringkali membutuhkan lebih banyak data. Apakah ada bukti lain yang bisa kita tambahkan?"
-- **Kriteria logicScore:** Penggunaan Hasty Generalization harus menurunkan logicScore karena menunjukkan kelemahan dalam pengumpulan dan interpretasi bukti.
+### Recommendations for AI Feedback
+- **Educative Feedback Phrase:** "You're drawing a strong conclusion from a few examples. In logic, this is called a generalization. To be more convincing, such an argument often requires more data. Is there any other evidence we could add?"
+- **logicScore Criteria:** The use of Hasty Generalization should lower the logicScore as it shows a weakness in evidence gathering and interpretation.
 
 ---
 
-## 4 Slippery Slope (Lereng Licin)
+## 4. Slippery Slope
 ### ID & Alias
 - FALLACY_SLIPPERY.
 
-### Kategori Fungsional
-- Kesesatan Presumsi Lemah.
+### Functional Category
+- Fallacy of Weak Presumption.
 
-### Definisi
-- Berasumsi bahwa suatu tindakan awal yang relatif kecil pasti akan memicu serangkaian peristiwa berantai yang tak terhindarkan, yang pada akhirnya mengarah pada hasil yang sangat negatif atau ekstrem, tanpa memberikan bukti yang cukup untuk setiap langkah dalam rantai tersebut.[17, 21]
+### Definition
+- Assuming that a relatively small initial action will inevitably trigger a chain of events, ultimately leading to a very negative or extreme outcome, without providing sufficient evidence for each step in the chain.[17, 21]
 
-### Analisis Penalaran (Mengapa Ini Sesat)
-- Kesesatan ini mengeksploitasi ketakutan (Pathos) dengan menyajikan skenario terburuk sebagai hasil yang tak terelakkan. Kesalahannya terletak pada asumsi bahwa hubungan sebab-akibat antara setiap langkah dalam rantai itu kuat dan pasti, padahal seringkali hubungan tersebut hanya bersifat kemungkinan atau bahkan tidak berdasar.[19, 13]
+### Reasoning Analysis (Why It's Fallacious)
+- This fallacy exploits fear (Pathos) by presenting a worst-case scenario as an inevitable outcome. The error lies in the assumption that the cause-and-effect relationship between each step in the chain is strong and certain, when often the relationship is merely possible or even baseless.[19, 13]
 
-### Contoh Konkret
-- **Konteks Umum:** "Jika kita mengizinkan siswa membawa ponsel ke sekolah, mereka akan menggunakannya untuk mencontek. Jika mereka mencontek, mereka tidak akan belajar. Jika mereka tidak belajar, mereka akan gagal ujian, tidak lulus, dan akhirnya menjadi pengangguran.".[17, 19]
-- **Konteks Indonesia:** "Kalau kita biarkan satu orang dapat minuman gratis, nanti semua orang minta gratis, dan bisnis kita akan bangkrut.".[25]
+### Concrete Examples
+- **General Context:** "If we allow students to bring phones to school, they will use them to cheat. If they cheat, they won't learn. If they don't learn, they will fail their exams, not graduate, and end up unemployed.".[17, 19]
+- **Indonesian Context:** "If we let one person get a free drink, soon everyone will demand one, and our business will go bankrupt.".[25]
 
-### Deteksi & Respons dalam Debat
-- **Sinyal Peringatan:** Argumen yang memprediksi masa depan yang suram dengan struktur "Jika A, maka B; Jika B, maka C;... maka Z".
-- **Strategi Sanggahan:**
-    - **Fokus pada Langkah Pertama:** "Mari kita evaluasi dampak dari tindakan pertama (A) itu sendiri, bukan serangkaian konsekuensi hipotetis yang belum tentu terjadi.".[20]
-    - **Pertanyakan Hubungan Sebab-Akibat:** "Bisakah Anda memberikan bukti bahwa A secara pasti akan menyebabkan B? Apakah tidak ada faktor lain yang bisa menghentikan rantai peristiwa ini?"
-    - **Tunjukkan Absurditasnya:** Jika rantai logikanya sangat lemah, tunjukkan bahwa kesimpulan ekstrem tersebut tidak masuk akal.
+### Detection & Response in Debate
+- **Warning Signs:** An argument that predicts a bleak future with a structure of "If A, then B; If B, then C;... then Z."
+- **Counter-Strategies:**
+    - **Focus on the First Step:** "Let's evaluate the impact of the first action (A) itself, not a series of hypothetical consequences that are not certain to happen.".[20]
+    - **Question the Causal Links:** "Can you provide evidence that A will definitely lead to B? Are there no other factors that could stop this chain of events?"
+    - **Show its Absurdity:** If the logical chain is particularly weak, show that the extreme conclusion is unreasonable.
 
-### Rekomendasi untuk Umpan Balik AI
-- **Frasa Umpan Balik Edukatif:** "Anda menggambarkan serangkaian konsekuensi yang mungkin terjadi. Ini adalah cara yang kuat untuk menunjukkan risiko. Namun, agar argumen ini lebih kuat, kita perlu memastikan setiap tautan dalam rantai sebab-akibat itu didukung oleh bukti. Mari kita fokus pada hubungan antara langkah pertama dan kedua."
-- **Kriteria logicScore:** Penggunaan Slippery Slope mengurangi logicScore karena bergantung pada spekulasi daripada bukti kausal yang kuat.
+### Recommendations for AI Feedback
+- **Educative Feedback Phrase:** "You're outlining a series of potential consequences. This is a powerful way to show risk. However, to make this argument stronger, we need to ensure each link in the cause-and-effect chain is supported by evidence. Let's focus on the connection between the first and second steps."
+- **logicScore Criteria:** The use of a Slippery Slope reduces the logicScore because it relies on speculation rather than strong causal evidence.
 
 ---
 
-## 5 Circular Reasoning (Penalaran Melingkar)
+## 5. Circular Reasoning
 ### ID & Alias
-- FALLACY_CIRCULAR; Penalaran Melingkar, Begging the Question.
+- FALLACY_CIRCULAR; Begging the Question.
 
-### Kategori Fungsional
-- Kesesatan Presumsi Tak Berdasar.
+### Functional Category
+- Fallacy of Unfounded Presumption.
 
-### Definisi
-- Terjadi ketika sebuah argumen menggunakan kesimpulannya sendiri sebagai salah satu premisnya. Argumen tersebut pada dasarnya menyatakan bahwa sesuatu itu benar karena ia benar, tanpa memberikan bukti eksternal.[17, 29]
+### Definition
+- Occurs when an argument uses its own conclusion as one of its premises. The argument essentially states that something is true because it is true, without providing external evidence.[17, 29]
 
-### Analisis Penalaran (Mengapa Ini Sesat)
-- Kesesatan ini gagal memberikan pembuktian yang sesungguhnya. Ia hanya mengulang klaim dengan kata-kata yang berbeda, sehingga tidak ada informasi atau alasan baru yang disajikan untuk mendukung kesimpulan.[17, 26] Argumen yang valid harus didasarkan pada premis yang memberikan dukungan independen untuk kesimpulan.
+### Reasoning Analysis (Why It's Fallacious)
+- This fallacy fails to provide any real proof. It merely restates the claim in different words, so no new information or reason is presented to support the conclusion.[17, 26] A valid argument must be based on premises that provide independent support for the conclusion.
 
-### Contoh Konkret
-- **Konteks Umum:** "Produk ini adalah yang terlaris karena kami menjualnya lebih banyak daripada produk lain.".[15]
-- **Konteks Indonesia:** "Peraturan itu harus ditaati karena itu adalah kewajiban." Argumen ini hanya berputar tanpa menjelaskan mengapa itu menjadi sebuah kewajiban.[26]
+### Concrete Examples
+- **General Context:** "This product is the bestseller because we sell more of it than any other product.".[15]
+- **Indonesian Context:** "That rule must be obeyed because it is an obligation." This argument just goes in a circle without explaining why it is an obligation.[26]
 
-### Deteksi & Respons dalam Debat
-- **Sinyal Peringatan:** Argumen yang terasa berputar-putar, di mana alasan yang diberikan pada dasarnya adalah pengulangan dari klaim awal dengan kalimat yang berbeda.
-- **Strategi Sanggahan:** Tunjukkan bahwa tidak ada bukti baru yang diberikan. "Anda pada dasarnya mengatakan bahwa X benar karena X benar. Bisakah Anda memberikan bukti dari luar yang mendukung klaim ini?" [21]
+### Detection & Response in Debate
+- **Warning Signs:** An argument that feels circular, where the reason given is essentially a rephrasing of the initial claim.
+- **Counter-Strategies:** Point out that no new evidence has been provided. "You are essentially saying that X is true because X is true. Can you provide any external evidence to support this claim?" [21]
 
-### Rekomendasi untuk Umpan Balik AI
-- **Frasa Umpan Balik Edukatif:** "Argumen Anda tampaknya menggunakan kesimpulan sebagai alasannya. Ini disebut penalaran melingkar. Untuk memperkuatnya, coba berikan bukti dari luar yang bisa mendukung klaim awal Anda."
-- **Kriteria logicScore:** Penggunaan Circular Reasoning harus sangat mengurangi logicScore karena ini adalah kesalahan fundamental dalam struktur pembuktian.
+### Recommendations for AI Feedback
+- **Educative Feedback Phrase:** "Your argument seems to be using its conclusion as its reason. This is called circular reasoning. To strengthen it, try providing external evidence that can support your initial claim."
+- **logicScore Criteria:** The use of Circular Reasoning should severely reduce the logicScore as it is a fundamental error in the structure of proof.
 
 ---
 
-## 6 False Dilemma (Dilema Palsu)
+## 6. False Dilemma
 ### ID & Alias
-- FALLACY_FALSE_DILEMMA; Dikotomi Palsu, False Dichotomy.
+- FALLACY_FALSE_DILEMMA; False Dichotomy.
 
-### Kategori Fungsional
-- Kesesatan Presumsi Tak Berdasar.
+### Functional Category
+- Fallacy of Unfounded Presumption.
 
-### Definisi
-- Menyajikan situasi seolah-olah hanya ada dua pilihan yang mungkin, padahal sebenarnya ada alternatif lain yang tersedia. Pilihan yang disajikan seringkali bersifat ekstrem.[17, 14]
+### Definition
+- Presenting a situation as if there are only two possible options, when in fact there are other alternatives available. The options presented are often extremes.[17, 14]
 
-### Analisis Penalaran (Mengapa Ini Sesat)
-- Kesesatan ini secara keliru membatasi spektrum pilihan yang ada, memaksa audiens untuk memilih antara dua ekstrem dan mengabaikan kemungkinan jalan tengah, kompromi, atau solusi alternatif lainnya.[17, 24] Ini adalah bentuk penyederhanaan berlebihan yang menyesatkan.
+### Reasoning Analysis (Why It's Fallacious)
+- This fallacy falsely limits the spectrum of available choices, forcing the audience to choose between two extremes and ignoring the possibility of a middle ground, compromise, or other alternative solutions.[17, 24] It is a misleading form of oversimplification.
 
-### Contoh Konkret
-- **Konteks Umum:** "Jika Anda tidak mendukung keputusan saya, berarti Anda tidak pernah benar-benar menjadi teman saya.".[14]
-- **Konteks Indonesia:** Dalam sebuah perdebatan, seseorang berkata, "Anda harus setuju dengan saya, atau Anda adalah musuh saya." [17] atau "Pilihannya hanya dua: menjadi kapitalis atau komunis." [24]
+### Concrete Examples
+- **General Context:** "If you don't support my decision, it means you were never really my friend.".[14]
+- **Indonesian Context:** In a debate, someone says, "You must agree with me, or you are my enemy." [17] or "The choice is only between being a capitalist or a communist." [24]
 
-### Deteksi & Respons dalam Debat
-- **Sinyal Peringatan:** Penggunaan frasa yang menyajikan pilihan "hitam atau putih" seperti "antara... atau...", "pilihannya hanya dua", atau "jika bukan A, maka pasti B".
-- **Strategi Sanggahan:** Tunjukkan adanya pilihan ketiga atau lebih. "Sebenarnya ada pilihan lain di antara dua ekstrem tersebut. Mari kita pertimbangkan opsi C." [22] atau "Mengapa kita harus membatasi diri pada dua pilihan itu saja? Ada beberapa alternatif lain yang belum kita bahas."
+### Detection & Response in Debate
+- **Warning Signs:** Use of phrases that present a "black or white" choice, such as "either... or...", "there are only two options," or "if it's not A, it must be B."
+- **Counter-Strategies:** Point out the existence of a third or more options. "Actually, there are other options between those two extremes. Let's consider option C." [22] or "Why must we limit ourselves to just those two choices? There are several other alternatives we haven't discussed."
 
-### Rekomendasi untuk Umpan Balik AI
-- **Frasa Umpan Balik Edukatif:** "Anda menyajikan situasi ini seolah hanya ada dua pilihan. Ini bisa sangat persuasif, tetapi terkadang ada opsi lain yang terlewat. Apakah ada kemungkinan jalan tengah atau alternatif lain yang bisa kita eksplorasi?"
-- **Kriteria logicScore:** Penggunaan False Dilemma harus mengurangi logicScore karena ini adalah bentuk penyederhanaan yang tidak akurat dari sebuah masalah.
+### Recommendations for AI Feedback
+- **Educative Feedback Phrase:** "You're presenting this situation as if there are only two choices. This can be very persuasive, but sometimes other options are overlooked. Is there a possible middle ground or another alternative we could explore?"
+- **logicScore Criteria:** The use of a False Dilemma should reduce the logicScore as it is an inaccurate simplification of an issue.
 
 ---
 
-## 7 Red Herring (Pengalih Perhatian)
+## 7. Red Herring
 ### ID & Alias
 - FALLACY_RED_HERRING.
 
-### Kategori Fungsional
-- Kesesatan Relevansi.
+### Functional Category
+- Fallacy of Relevance.
 
-### Definisi
-- Upaya untuk mengalihkan perhatian dari argumen utama dengan memperkenalkan topik baru yang tidak relevan, namun seringkali lebih menarik atau emosional.[17, 31]
+### Definition
+- An attempt to divert attention from the main argument by introducing a new, irrelevant topic that is often more interesting or emotional.[17, 31]
 
-### Analisis Penalaran (Mengapa Ini Sesat)
-- Kesesatan ini menghindari kewajiban untuk menanggapi argumen yang sedang dibahas. Dengan melemparkan "umpan" yang menarik, pelaku berharap lawan bicara dan audiens akan fokus pada topik baru tersebut, sehingga argumen asli terlupakan dan tidak terbantah.[31, 14] Ini adalah pelanggaran relevansi yang jelas.
+### Reasoning Analysis (Why It's Fallacious)
+- This fallacy evades the obligation to respond to the argument at hand. By throwing out an enticing "bait," the perpetrator hopes the opponent and audience will focus on the new topic, leaving the original argument forgotten and unrefuted.[31, 14] It is a clear violation of relevance.
 
-### Contoh Konkret
-- **Konteks Umum:** Wartawan: "Bagaimana tanggapan Anda tentang tuduhan korupsi di departemen Anda?" Politisi: "Saya sangat prihatin dengan tuduhan itu, tetapi yang lebih mendesak saat ini adalah bagaimana kita membantu para korban bencana alam yang baru saja terjadi."
-- **Konteks Indonesia:** A: "Kita tidak perlu membahas tentang pajak yang lebih rendah." B: "Mari kita bicara tentang betapa buruknya situasi kesehatan di negara ini." [17]
+### Concrete Examples
+- **General Context:** Journalist: "What is your response to the corruption allegations in your department?" Politician: "I am very concerned about those allegations, but what is more urgent right now is how we help the victims of the recent natural disaster."
+- **Indonesian Context:** A: "We don't need to talk about lower taxes." B: "Let's talk about how bad the healthcare situation is in this country." [17]
 
-### Deteksi & Respons dalam Debat
-- **Sinyal Peringatan:** Pergeseran topik yang tiba-tiba ke isu yang tampaknya tidak berhubungan, terutama jika isu baru tersebut lebih kontroversial atau menyentuh emosi.
-- **Strategi Sanggahan:** Akui poin baru tersebut secara singkat, lalu kembalikan diskusi ke jalur semula dengan tegas. "Itu poin yang menarik, namun sepertinya mengalihkan kita dari topik utama. Mari kembali membahas [topik asli]." [32, 19]
+### Detection & Response in Debate
+- **Warning Signs:** A sudden shift in topic to a seemingly unrelated issue, especially if the new issue is more controversial or emotionally charged.
+- **Counter-Strategies:** Acknowledge the new point briefly, then firmly steer the discussion back on track. "That's an interesting point, but it seems to be taking us away from the main topic. Let's get back to discussing [original topic]." [32, 19]
 
-### Rekomendasi untuk Umpan Balik AI
-- **Frasa Umpan Balik Edukatif:** "Poin yang Anda sampaikan sangat menarik. Namun, sepertinya ini sedikit bergeser dari topik utama yang sedang kita diskusikan. Bagaimana jika kita kembali ke argumen awal terlebih dahulu?"
-- **Kriteria logicScore:** Penggunaan Red Herring harus mengurangi logicScore karena ini adalah upaya sadar untuk menghindari argumen yang relevan.
+### Recommendations for AI Feedback
+- **Educative Feedback Phrase:** "The point you're making is very interesting. However, it seems to be a slight shift from the main topic we were discussing. What if we return to the initial argument first?"
+- **logicScore Criteria:** The use of a Red Herring should reduce the logicScore as it is a conscious attempt to evade a relevant argument.
 
 ---
 
-## 8 Appeal to Authority (Daya Tarik Otoritas)
+## 8. Appeal to Authority
 ### ID & Alias
 - FALLACY_APPEAL_AUTH; Argumentum ad Verecundiam.
 
-### Kategori Fungsional
-- Kesesatan Presumsi Lemah.
+### Functional Category
+- Fallacy of Weak Presumption.
 
-### Definisi
-- Mengandalkan pendapat atau testimoni dari seorang tokoh otoritas sebagai bukti, padahal keahlian tokoh tersebut tidak relevan dengan topik yang dibahas, atau ada perbedaan pendapat di antara para ahli di bidang tersebut.[17, 14]
+### Definition
+- Relying on the opinion or testimony of an authority figure as evidence, when that figure's expertise is not relevant to the topic at hand, or when there is disagreement among experts in that field.[17, 14]
 
-### Analisis Penalaran (Mengapa Ini Sesat)
-- Mengutip seorang ahli bisa menjadi bagian dari argumen yang kuat, tetapi menjadi sesat ketika otoritas yang dikutip tidak memiliki kualifikasi di bidang yang relevan atau pendapatnya disajikan sebagai bukti mutlak.[21] Kebenaran sebuah klaim tidak ditentukan oleh siapa yang mengatakannya, tetapi oleh bukti dan penalaran yang mendukungnya.
+### Reasoning Analysis (Why It's Fallacious)
+- Citing an expert can be part of a strong argument, but it becomes fallacious when the cited authority is not qualified in the relevant field or their opinion is presented as absolute proof.[21] The truth of a claim is not determined by who says it, but by the evidence and reasoning that support it.
 
-### Contoh Konkret
-- **Konteks Umum:** "Saya membaca di blog kebugaran bahwa kopi tidak sehat, jadi kita harus berhenti meminumnya." (Blog kebugaran bukanlah otoritas medis yang kredibel).[14]
-- **Konteks Indonesia:** "Menurut paman saya yang seorang pengacara, investasi di saham teknologi sangat berisiko." (Keahlian pengacara adalah di bidang hukum, bukan analisis keuangan).
+### Concrete Examples
+- **General Context:** "I read on a fitness blog that coffee is unhealthy, so we should stop drinking it." (A fitness blog is not a credible medical authority).[14]
+- **Indonesian Context:** "According to my uncle, who is a lawyer, investing in tech stocks is very risky." (A lawyer's expertise is in law, not financial analysis).
 
-### Deteksi & Respons dalam Debat
-- **Sinyal Peringatan:** Penggunaan frasa "Menurut [nama tokoh]..." atau "Seorang ahli mengatakan..." tanpa disertai data pendukung.
-- **Strategi Sanggahan:** Pertanyakan relevansi keahlian tokoh tersebut. "Apakah keahlian tokoh tersebut relevan dengan topik yang sedang kita diskusikan ini?" [8] atau "Meskipun beliau ahli di bidangnya, apakah ada bukti atau data lain yang mendukung klaim ini di luar pendapat beliau?"
+### Detection & Response in Debate
+- **Warning Signs:** Use of phrases like "According to [figure's name]..." or "An expert says..." without accompanying supporting data.
+- **Counter-Strategies:** Question the relevance of the figure's expertise. "Is this figure's expertise relevant to the topic we are currently discussing?" [8] or "Although they are an expert in their field, is there other evidence or data to support this claim beyond their opinion?"
 
-### Rekomendasi untuk Umpan Balik AI
-- **Frasa Umpan Balik Edukatif:** "Mengutip seorang ahli bisa membuat argumen menjadi sangat kuat. Mari kita pastikan bahwa keahlian tokoh yang Anda kutip benar-benar relevan dengan topik ini. Apakah ada data pendukung lain yang bisa kita tambahkan?"
-- **Kriteria logicScore:** Penggunaan Appeal to Authority yang tidak relevan harus mengurangi logicScore karena bukti yang diajukan lemah.
+### Recommendations for AI Feedback
+- **Educative Feedback Phrase:** "Citing an expert can make an argument very strong. Let's make sure the expertise of the figure you're quoting is truly relevant to this topic. Is there any other supporting data we could add?"
+- **logicScore Criteria:** The use of an irrelevant Appeal to Authority should reduce the logicScore because the evidence presented is weak.
 
 ---
 
-## 9 Bandwagon (Ikut-ikutan)
+## 9. Bandwagon
 ### ID & Alias
 - FALLACY_BANDWAGON; Argumentum ad Populum, Appeal to Popularity.
 
-### Kategori Fungsional
-- Kesesatan Relevansi.
+### Functional Category
+- Fallacy of Relevance.
 
-### Definisi
-- Berargumen bahwa suatu klaim itu benar atau suatu tindakan itu baik hanya karena populer atau banyak orang yang meyakini atau melakukannya.[33, 21]
+### Definition
+- Arguing that a claim is true or an action is good simply because it is popular or many people believe or do it.[33, 21]
 
-### Analisis Penalaran (Mengapa Ini Sesat)
-- Popularitas sebuah ide tidak memiliki hubungan logis dengan kebenarannya.[23] Sejarah telah menunjukkan banyak keyakinan populer yang ternyata salah (misalnya, keyakinan bahwa bumi itu datar). Argumen ini mengalihkan fokus dari bukti substantif ke tekanan sosial atau tren.
+### Reasoning Analysis (Why It's Fallacious)
+- The popularity of an idea has no logical bearing on its truth.[23] History has shown many popular beliefs to be false (e.g., the belief that the Earth was flat). This argument shifts the focus from substantive evidence to social pressure or trends.
 
-### Contoh Konkret
-- **Konteks Umum:** "Tentu saja tidak apa-apa menunggu hingga menit terakhir untuk mengerjakan tugas. Semua orang juga melakukannya!" [14]
-- **Konteks Indonesia:** "Banyak orang yang memilih sosok A, jadi A pasti benar." [27] atau "Semua teman saya sudah punya ponsel model terbaru, jadi saya juga harus punya."
+### Concrete Examples
+- **General Context:** "Of course it's okay to wait until the last minute to do the assignment. Everybody else does it!" [14]
+- **Indonesian Context:** "Many people are choosing candidate A, so A must be the right choice." [27] or "All my friends have the latest model phone, so I should have one too."
 
-### Deteksi & Respons dalam Debat
-- **Sinyal Peringatan:** Argumen yang didasarkan pada frasa seperti "semua orang tahu...", "banyak orang percaya...", "ini sedang tren...", atau "mayoritas berpendapat...".
-- **Strategi Sanggahan:** Tunjukkan bahwa popularitas bukanlah bukti kebenaran. "Popularitas sebuah ide tidak secara otomatis membuatnya benar. Mari kita periksa bukti dan fakta yang sebenarnya." [5] atau "Apakah ada alasan lain yang mendukung klaim ini selain karena banyak orang melakukannya?"
+### Detection & Response in Debate
+- **Warning Signs:** Arguments based on phrases like "everyone knows...", "many people believe...", "it's trending...", or "the majority thinks...".
+- **Counter-Strategies:** Point out that popularity is not proof of truth. "The popularity of an idea doesn't automatically make it true. Let's examine the actual evidence and facts." [5] or "Is there any other reason to support this claim besides the fact that many people do it?"
 
-### Rekomendasi untuk Umpan Balik AI
-- **Frasa Umpan Balik Edukatif:** "Anda menunjukkan bahwa ide ini sangat populer. Itu adalah pengamatan yang penting. Namun, dalam logika, kebenaran sebuah argumen tidak selalu ditentukan oleh jumlah pendukungnya. Mari kita coba cari bukti lain yang bisa memperkuat klaim ini."
-- **Kriteria logicScore:** Penggunaan Bandwagon harus mengurangi logicScore karena premisnya (popularitas) tidak relevan secara logis dengan kesimpulan (kebenaran).
+### Recommendations for AI Feedback
+- **Educative Feedback Phrase:** "You're pointing out that this idea is very popular. That's an important observation. However, in logic, the truth of an argument isn't always determined by its number of supporters. Let's try to find other evidence that could strengthen this claim."
+- **logicScore Criteria:** The use of the Bandwagon fallacy should reduce the logicScore because its premise (popularity) is logically irrelevant to the conclusion (truth).
