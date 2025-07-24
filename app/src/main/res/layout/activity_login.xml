@@ -14,13 +14,13 @@
         android:textSize="28sp"
         android:textColor="@color/black"
         android:fontFamily="@font/inter_bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvUsername"
+        app:layout_constraintBottom_toTopOf="@+id/WrapUsername"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvUsername"
+        android:id="@+id/WrapUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
@@ -28,6 +28,7 @@
         app:boxBackgroundColor="@color/neutral_300"
         app:boxBackgroundMode="filled"
         app:boxCornerRadiusBottomEnd="12dp"
+        app:hintTextColor="@color/neutral_500"
         app:boxCornerRadiusBottomStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusTopStart="12dp"
@@ -39,18 +40,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tvUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:fontFamily="@font/inter_medium"
+            android:lineSpacingExtra="4dp"
             android:hint="Username"
-            android:paddingVertical="18dp"
+            android:paddingVertical="26dp"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tvPassword"
+        android:id="@+id/WrapPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
@@ -60,32 +63,33 @@
         app:boxCornerRadiusBottomEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
+        app:hintTextColor="@color/neutral_500"
         app:boxCornerRadiusTopStart="12dp"
         app:boxStrokeColor="@android:color/transparent"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvUsername">
+        app:layout_constraintTop_toBottomOf="@+id/WrapUsername">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tvPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:fontFamily="@font/inter_medium"
             android:hint="Password"
-            android:paddingVertical="18dp"
+            android:paddingVertical="26dp"
             android:textColor="@color/black" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
-        android:layout_height="58dp"
+        android:layout_height="66dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="12dp"
         android:backgroundTint="@color/neutral_900"
-        android:rippleColor="@color/neutral_300"
         android:text="Login"
         android:fontFamily="@font/inter_bold"
         android:textAllCaps="false"
@@ -96,6 +100,6 @@
         app:iconPadding="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
+        app:layout_constraintTop_toBottomOf="@+id/WrapPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
