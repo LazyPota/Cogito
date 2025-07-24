@@ -5,14 +5,23 @@ const MatchmakingController = {
     async findMatch(req, res) {
         try {
             const userId = req.user.id;
-            const result = await matchmakingService.matchUser(userId);
+            const { issue_id } = req.body;
 
-            return res.status(200).json({
+            if (!issue_id) {
+                return res.status(400).json({
+                    status: "fail",
+                    message: "Missing required field: issue_id",
+                });
+            }
+
+            const result = await matchmakingService.matchUser(userId, issue_id);
+
+            return res.json({
                 status: "success",
                 data: result,
             });
         } catch (error) {
-            console.error("Error in findMatch:", error);
+            console.error("Error finding match:", error);
             return res.status(500).json({
                 status: "error",
                 message: "Internal Server Error",
@@ -33,12 +42,12 @@ const MatchmakingController = {
                 });
             }
 
-            return res.status(200).json({
+            return res.json({
                 status: "success",
                 message: "Matchmaking cancelled",
             });
         } catch (error) {
-            console.error("Error in cancelMatch:", error);
+            console.error("Error cancelling match:", error);
             return res.status(500).json({
                 status: "error",
                 message: "Internal Server Error",
@@ -52,12 +61,12 @@ const MatchmakingController = {
             const userId = req.user.id;
             const status = await matchmakingService.getStatus(userId);
 
-            return res.status(200).json({
+            return res.json({
                 status: "success",
                 data: { status },
             });
         } catch (error) {
-            console.error("Error in getStatus:", error);
+            console.error("Error getting matchmaking status:", error);
             return res.status(500).json({
                 status: "error",
                 message: "Internal Server Error",
