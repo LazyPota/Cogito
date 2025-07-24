@@ -7,12 +7,20 @@ const DebateModel = {
         contra_user_id,
         is_vs_ai,
         session_name,
+        status = "active",
     }) {
         const res = await pool.query(
-            `INSERT INTO debate_sessions (issue_id, pro_user_id, contra_user_id, is_vs_ai, session_name)
-        VALUES ($1, $2, $3, $4, $5)
-        RETURNING *`,
-            [issue_id, pro_user_id, contra_user_id, is_vs_ai, session_name]
+            `INSERT INTO debate_sessions (issue_id, pro_user_id, contra_user_id, is_vs_ai, session_name, status)
+         VALUES ($1, $2, $3, $4, $5, $6)
+         RETURNING *`,
+            [
+                issue_id,
+                pro_user_id,
+                contra_user_id,
+                is_vs_ai,
+                session_name,
+                status,
+            ]
         );
         return res.rows[0];
     },
@@ -89,6 +97,34 @@ const DebateModel = {
             [sessionId]
         );
         return result.rows[0] || null;
+    },
+
+    async getActiveSessionCountByUser(userId) {
+        const result = await pool.query(
+            `SELECT COUNT(*) FROM debate_sessions 
+         WHERE (pro_user_id = $1 OR contra_user_id = $1)
+         AND status = 'active'`,
+            [userId]
+        );
+        return parseInt(result.rows[0].count, 10);
+    },
+
+    async getUserMessageCount(sessionId, userId) {
+        const result = await pool.query(
+            `SELECT COUNT(*) FROM debates 
+         WHERE session_id = $1 AND sender_user_id = $2`,
+            [sessionId, userId]
+        );
+        return parseInt(result.rows[0].count, 10);
+    },
+
+    async cancelSession(sessionId) {
+        await pool.query(
+            `UPDATE debate_sessions 
+         SET status = 'cancelled', updated_at = current_timestamp 
+         WHERE id = $1`,
+            [sessionId]
+        );
     },
 };
 

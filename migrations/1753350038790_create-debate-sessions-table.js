@@ -29,6 +29,11 @@ exports.up = (pgm) => {
             type: "varchar(100)",
             notNull: true,
         },
+        status: {
+            type: "varchar(20)",
+            notNull: true,
+            default: "active",
+        },
         created_at: {
             type: "timestamp",
             default: pgm.func("current_timestamp"),
@@ -46,6 +51,12 @@ exports.up = (pgm) => {
       (is_vs_ai = true AND (pro_user_id IS NOT NULL OR contra_user_id IS NOT NULL)) OR
       (is_vs_ai = false AND pro_user_id IS NOT NULL AND contra_user_id IS NOT NULL)
     )`
+    );
+
+    pgm.addConstraint(
+        "debate_sessions",
+        "status_valid_check",
+        `CHECK (status IN ('active', 'nonactive', 'cancelled'))`
     );
 };
 

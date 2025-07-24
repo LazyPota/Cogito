@@ -22,12 +22,19 @@ const DebateController = {
                 });
             }
 
+            const userId = pro_user_id || contra_user_id;
+            const activeCount = await DebateModel.getActiveSessionCountByUser(
+                userId
+            );
+            const sessionStatus = activeCount >= 20 ? "nonactive" : "active";
+
             const session = await DebateModel.createSession({
                 issue_id,
                 pro_user_id,
                 contra_user_id,
                 is_vs_ai,
                 session_name,
+                status: sessionStatus,
             });
 
             return res.status(201).json({
@@ -174,6 +181,53 @@ const DebateController = {
             });
         } catch (error) {
             console.error("Error getting sessions by user:", error);
+            return res.status(500).json({
+                status: "error",
+                message: "Internal Server Error",
+            });
+        }
+    },
+
+    async endTheSession(req, res) {
+        try {
+            const { id } = req.params;
+            const userId = req.user?.id;
+
+            const session = await DebateModel.getSessionById(id);
+            if (!session) {
+                return res.status(404).json({
+                    status: "fail",
+                    message: "Debate session not found",
+                });
+            }
+
+            const isParticipant =
+                session.pro_user_id === userId ||
+                session.contra_user_id === userId;
+            if (!isParticipant) {
+                return res.status(403).json({
+                    status: "fail",
+                    message: "You are not a participant in this session.",
+                });
+            }
+
+            const count = await DebateModel.getUserMessageCount(id, userId);
+            if (count < 5) {
+                return res.status(403).json({
+                    status: "fail",
+                    message:
+                        "You can only surrender after sending at least 5 messages.",
+                });
+            }
+
+            await DebateModel.cancelSession(id);
+
+            return res.json({
+                status: "success",
+                message: "You surrendered the session.",
+            });
+        } catch (error) {
+            console.error("Error ending the session:", error);
             return res.status(500).json({
                 status: "error",
                 message: "Internal Server Error",

@@ -213,4 +213,71 @@ describe("DebateController", () => {
             expect(res.body.data).toHaveLength(1);
         });
     });
+
+    describe("POST /api/v1/debates/sessions/:id/surrender", () => {
+        it("should return 404 if session is not found", async () => {
+            DebateModel.getSessionById.mockResolvedValue(null);
+
+            const res = await request(app)
+                .post("/api/v1/debates/sessions/999/surrender")
+                .set("Authorization", `Bearer ${accessToken}`);
+
+            expect(res.statusCode).toBe(404);
+            expect(res.body.status).toBe("fail");
+            expect(res.body.message).toMatch(/not found/i);
+        });
+
+        it("should return 403 if user is not a participant", async () => {
+            DebateModel.getSessionById.mockResolvedValue({
+                id: 1,
+                pro_user_id: 1234, 
+                contra_user_id: 5678,
+            });
+
+            const res = await request(app)
+                .post("/api/v1/debates/sessions/1/surrender")
+                .set("Authorization", `Bearer ${accessToken}`);
+
+            expect(res.statusCode).toBe(403);
+            expect(res.body.status).toBe("fail");
+            expect(res.body.message).toMatch(/not a participant/i);
+        });
+
+        it("should return 403 if message count < 5", async () => {
+            DebateModel.getSessionById.mockResolvedValue({
+                id: 1,
+                pro_user_id: testUser.id,
+                contra_user_id: null,
+            });
+
+            DebateModel.getUserMessageCount.mockResolvedValue(3);
+
+            const res = await request(app)
+                .post("/api/v1/debates/sessions/1/surrender")
+                .set("Authorization", `Bearer ${accessToken}`);
+
+            expect(res.statusCode).toBe(403);
+            expect(res.body.status).toBe("fail");
+            expect(res.body.message).toMatch(/at least 5 messages/i);
+        });
+
+        it("should cancel the session if message count >= 5", async () => {
+            DebateModel.getSessionById.mockResolvedValue({
+                id: 1,
+                pro_user_id: testUser.id,
+                contra_user_id: null,
+            });
+
+            DebateModel.getUserMessageCount.mockResolvedValue(6);
+            DebateModel.cancelSession.mockResolvedValue();
+
+            const res = await request(app)
+                .post("/api/v1/debates/sessions/1/surrender")
+                .set("Authorization", `Bearer ${accessToken}`);
+
+            expect(res.statusCode).toBe(200);
+            expect(res.body.status).toBe("success");
+            expect(res.body.message).toMatch(/surrendered/i);
+        });
+    });
 });
