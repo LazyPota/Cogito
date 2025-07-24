@@ -1,0 +1,59 @@
+{
+<<<<<<< HEAD
+    "name": "garuda-backend",
+    "version": "1.0.0",
+=======
+    "name": "cogito-backend",
+    "version": "1.0.0",
+    "description": "Cogito Backend App",
+    "keywords": [
+        "cogito",
+        "ai"
+    ],
+    "license": "MIT",
+    "author": "Anti Desain",
+    "type": "commonjs",
+>>>>>>> 45791c0 (first-commit)
+    "main": "src/index.js",
+    "scripts": {
+        "dev": "nodemon src/index.js",
+        "start": "node src/index.js",
+        "migrate": "node scripts/run-migrate.js",
+<<<<<<< HEAD
+        "migrate:create": "node-pg-migrate create -m migrations"
+=======
+        "migrate:create": "node-pg-migrate create -m migrations",
+        "test": "cross-env NODE_ENV=test jest -i",
+        "test:coverage": "cross-env NODE_ENV=test jest --coverage -i",
+        "test:watch:change": "cross-env NODE_ENV=test jest --watch -i",
+        "test:watch": "cross-env NODE_ENV=test jest --watchAll --coverage -i",
+        "migrate:test": "cross-env NODE_ENV=test node scripts/run-migrate.js"
+>>>>>>> 45791c0 (first-commit)
+    },
+    "dependencies": {
+        "axios": "^1.10.0",
+        "bcrypt": "^6.0.0",
+        "dotenv": "^16.6.1",
+        "express": "^4.18.2",
+        "jsonwebtoken": "^9.0.2",
+        "multer": "^2.0.2",
+        "node-cron": "^4.2.1",
+<<<<<<< HEAD
+        "pg": "^8.11.0"
+    },
+    "devDependencies": {
+        "node-pg-migrate": "^7.1.0",
+        "nodemon": "^3.0.0"
+=======
+        "pg": "^8.11.0",
+        "socket.io": "^4.8.1"
+    },
+    "devDependencies": {
+        "cross-env": "^7.0.3",
+        "jest": "^30.0.5",
+        "node-pg-migrate": "^7.1.0",
+        "nodemon": "^3.0.0",
+        "supertest": "^7.1.4"
+>>>>>>> 45791c0 (first-commit)
+    }
+}
