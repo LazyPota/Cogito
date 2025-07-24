@@ -1,0 +1,15 @@
+{
+  "name": "llama-setup",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "node-llama-cpp": "^3.10.0"
+  }
+}

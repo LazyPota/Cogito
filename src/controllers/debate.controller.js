@@ -1,4 +1,4 @@
-const axios = require("axios");
+const { getAIResponse } = require("../services/llama.service");
 const { translateToIndonesian } = require("../services/translate.service");
 const DebateModel = require("../models/debate.model");
 
@@ -13,6 +13,14 @@ const DebateController = {
                 is_vs_ai,
                 session_name,
             } = req.body;
+
+            if (!issue_id || !pro_user_id || !session_name) {
+                return res.status(400).json({
+                    status: "fail",
+                    message:
+                        "issue_id, pro_user_id, and session_name are required",
+                });
+            }
 
             const session = await DebateModel.createSession({
                 issue_id,
@@ -89,16 +97,9 @@ const DebateController = {
             }
 
             if (session.is_vs_ai) {
-                const aiRes = await axios.post(
-                    process.env.AI_CHAT_URL + "/chat",
-                    {
-                        message: messageOriginal,
-                    }
-                );
-
+                const aiResult = await getAIResponse(messageOriginal);
                 const aiOriginal =
-                    aiRes.data.message ||
-                    "Sorry, We can't reply at this time..";
+                    aiResult.content || "Sorry, We can't reply at this time..";
                 const aiTranslated = await translateToIndonesian(aiOriginal);
                 const aiRole = senderRole === "pro" ? "contra" : "pro";
 
