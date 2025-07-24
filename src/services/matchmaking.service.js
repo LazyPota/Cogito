@@ -1,25 +1,26 @@
 const DebateModel = require("../models/debate.model");
-const { getRandomIssue } = require("../utils/issue.helper");
 
 const waitingQueue = [];
 
-async function matchUser(userId) {
+async function matchUser(userId, issueId) {
     const existing = waitingQueue.find((entry) => entry.userId === userId);
     if (existing) {
         return { status: "waiting", role: existing.role };
     }
 
-    if (waitingQueue.length === 0) {
+    const opponentIndex = waitingQueue.findIndex(
+        (entry) => entry.issueId === issueId
+    );
+    if (opponentIndex === -1) {
         const role = Math.random() < 0.5 ? "pro" : "contra";
-        waitingQueue.push({ userId, role });
+        waitingQueue.push({ userId, role, issueId });
         return { status: "waiting", role };
     }
 
-    const opponent = waitingQueue.shift();
+    const opponent = waitingQueue.splice(opponentIndex, 1)[0]; 
     const proUserId = opponent.role === "pro" ? opponent.userId : userId;
     const contraUserId = opponent.role === "pro" ? userId : opponent.userId;
 
-    const issueId = await getRandomIssue();
     const session = await DebateModel.createSession({
         issue_id: issueId,
         pro_user_id: proUserId,
