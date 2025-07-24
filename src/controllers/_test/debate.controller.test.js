@@ -34,7 +34,6 @@ const getAIResponse = async (prompt) => {
 
 const testUser = {
     id: null,
-    email: "testuser@example.com",
     password: "hashed_password",
     username: "testuser",
 };
@@ -43,12 +42,12 @@ let accessToken = "";
 
 beforeAll(async () => {
     const result = await db.query(
-        `INSERT INTO users (email, password, username) VALUES ($1, $2, $3) RETURNING id`,
-        [testUser.email, testUser.password, testUser.username]
+        `INSERT INTO users (password, username) VALUES ($1, $2) RETURNING id`,
+        [testUser.password, testUser.username]
     );
     testUser.id = result.rows[0].id;
     accessToken = jwt.sign(
-        { id: testUser.id, email: testUser.email },
+        { id: testUser.id, username: testUser.username },
         process.env.JWT_SECRET
     );
 });
@@ -58,7 +57,7 @@ beforeEach(async () => {
 });
 
 afterAll(async () => {
-    await db.query(`DELETE FROM users WHERE email = $1`, [testUser.email]);
+    await db.query(`DELETE FROM users WHERE username = $1`, [testUser.username]);
     await db.end();
 });
 

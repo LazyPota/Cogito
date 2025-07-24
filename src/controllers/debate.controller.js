@@ -188,6 +188,7 @@ const DebateController = {
         }
     },
 
+    // GET /api/v1/debates/surrender
     async endTheSession(req, res) {
         try {
             const { id } = req.params;

@@ -14,10 +14,10 @@ const UserModel = {
         return res.rows[0];
     },
 
-    async create({ username, email, password }) {
+    async create({ username, password }) {
         const res = await pool.query(
-            "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *",
-            [username, email, password]
+            "INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *",
+            [username, password]
         );
         return res.rows[0];
     },

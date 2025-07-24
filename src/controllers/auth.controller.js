@@ -7,9 +7,11 @@ const AuthController = {
     // POST /api/v1/auth/register
     async register(req, res) {
         try {
-            const { username, email, password } = req.body;
+            const { username, password } = req.body;
 
-            if (!username || !email || !password) {
+            console.log(req.body);
+
+            if (!username || !password) {
                 return res.status(400).json({
                     status: "fail",
                     message: "All fields are required",
@@ -28,7 +30,6 @@ const AuthController = {
 
             const user = await UserModel.create({
                 username,
-                email,
                 password: hashedPassword,
             });
 
@@ -38,7 +39,6 @@ const AuthController = {
                 data: {
                     id: user.id,
                     username: user.username,
-                    email: user.email,
                 },
             });
         } catch (error) {
@@ -91,9 +91,8 @@ const AuthController = {
                     user: {
                         id: user.id,
                         username: user.username,
-                        email: user.email,
                     },
-                    token: `Bearer ${token}`,
+                    token: `${token}`,
                 },
             });
         } catch (error) {

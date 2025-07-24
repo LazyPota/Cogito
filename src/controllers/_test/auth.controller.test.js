@@ -9,7 +9,6 @@ describe("AuthController", () => {
     const userData = {
         id: 1,
         username: "testuser",
-        email: "test@example.com",
         password: "$2b$10$hashedpassword", // hashed dummy
     };
 
@@ -37,7 +36,6 @@ describe("AuthController", () => {
 
             const res = await request(app).post("/api/v1/auth/register").send({
                 username: userData.username,
-                email: userData.email,
                 password: "password123",
             });
 
@@ -51,7 +49,6 @@ describe("AuthController", () => {
 
             const res = await request(app).post("/api/v1/auth/register").send({
                 username: "newuser",
-                email: "new@example.com",
                 password: "password123",
             });
 

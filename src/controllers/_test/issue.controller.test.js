@@ -5,7 +5,6 @@ const app = require("../../../src/app");
 
 const testUser = {
     id: null,
-    email: "testuser@example.com",
     password: "hashed_password",
     username: "testuser",
 };
@@ -15,13 +14,13 @@ let insertedIssueIds = [];
 
 beforeAll(async () => {
     const userRes = await db.query(
-        `INSERT INTO users (email, password, username) VALUES ($1, $2, $3) RETURNING id`,
-        [testUser.email, testUser.password, testUser.username]
+        `INSERT INTO users (password, username) VALUES ($1, $2) RETURNING id`,
+        [testUser.password, testUser.username]
     );
     testUser.id = userRes.rows[0].id;
 
     accessToken = jwt.sign(
-        { id: testUser.id, email: testUser.email },
+        { id: testUser.id, username: testUser.username },
         process.env.JWT_SECRET
     );
 

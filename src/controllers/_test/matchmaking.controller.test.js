@@ -8,13 +8,11 @@ jest.mock("../../models/debate.model");
 
 describe("Matchmaking API", () => {
     const user1 = {
-        email: "user1@example.com",
         password: "password123",
         username: "user1",
     };
 
     const user2 = {
-        email: "user2@example.com",
         password: "password123",
         username: "user2",
     };
@@ -25,31 +23,31 @@ describe("Matchmaking API", () => {
     beforeAll(async () => {
         // Insert user 1
         const res1 = await db.query(
-            `INSERT INTO users (email, password, username) VALUES ($1, $2, $3) RETURNING id`,
-            [user1.email, user1.password, user1.username]
+            `INSERT INTO users (password, username) VALUES ($1, $2) RETURNING id`,
+            [user1.password, user1.username]
         );
         user1.id = res1.rows[0].id;
         user1Token = jwt.sign(
-            { id: user1.id, email: user1.email },
+            { id: user1.id, username: user1.username },
             process.env.JWT_SECRET
         );
 
         // Insert user 2
         const res2 = await db.query(
-            `INSERT INTO users (email, password, username) VALUES ($1, $2, $3) RETURNING id`,
-            [user2.email, user2.password, user2.username]
+            `INSERT INTO users (password, username) VALUES ($1, $2) RETURNING id`,
+            [user2.password, user2.username]
         );
         user2.id = res2.rows[0].id;
         user2Token = jwt.sign(
-            { id: user2.id, email: user2.email },
+            { id: user2.id, username: user2.username },
             process.env.JWT_SECRET
         );
     });
 
     afterAll(async () => {
-        await db.query(`DELETE FROM users WHERE email IN ($1, $2)`, [
-            user1.email,
-            user2.email,
+        await db.query(`DELETE FROM users WHERE username IN ($1, $2)`, [
+            user1.username,
+            user2.username,
         ]);
         await db.end();
     });
