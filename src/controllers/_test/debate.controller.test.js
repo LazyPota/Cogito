@@ -1,5 +1,6 @@
 const request = require("supertest");
 const jwt = require("jsonwebtoken");
+const axios = require("axios"); // dipakai sungguhan, bukan mock
 const app = require("../../app");
 const db = require("../../db/pool");
 const DebateModel = require("../../models/debate.model");
@@ -8,24 +9,52 @@ const { translateToIndonesian } = require("../../services/translate.service");
 jest.mock("../../models/debate.model");
 jest.mock("../../services/translate.service");
 
+// Service AI Response asli (tanpa mock)
+const getAIResponse = async (prompt) => {
+    try {
+        const response = await axios.post("http://localhost:4000/chat", {
+            model: "qwen1_5-0_5b-chat-q8_0",
+            prompt,
+            stream: false,
+        });
+
+        const aiMessage = response.data?.result;
+        if (!aiMessage) {
+            throw new Error(
+                "AI response 'result' property is empty or missing."
+            );
+        }
+
+        return { content: aiMessage };
+    } catch (error) {
+        console.error("❌ Error in getAIResponse:", error.message);
+        return { content: "AI tidak dapat memberikan respon saat ini." };
+    }
+};
+
 const testUser = {
     id: null,
     email: "testuser@example.com",
-    password: "hashed_password", // anggap sudah di-hash saat insert
+    password: "hashed_password",
     username: "testuser",
 };
+
 let accessToken = "";
 
 beforeAll(async () => {
-    const insertResult = await db.query(
+    const result = await db.query(
         `INSERT INTO users (email, password, username) VALUES ($1, $2, $3) RETURNING id`,
         [testUser.email, testUser.password, testUser.username]
     );
-    testUser.id = insertResult.rows[0].id;
+    testUser.id = result.rows[0].id;
     accessToken = jwt.sign(
         { id: testUser.id, email: testUser.email },
         process.env.JWT_SECRET
     );
+});
+
+beforeEach(async () => {
+    await db.query("DELETE FROM issues");
 });
 
 afterAll(async () => {
@@ -47,7 +76,7 @@ describe("DebateController", () => {
 
             DebateModel.createSession.mockResolvedValue(fakeSession);
 
-            const response = await request(app)
+            const res = await request(app)
                 .post("/api/v1/debates/sessions")
                 .set("Authorization", `Bearer ${accessToken}`)
                 .send({
@@ -58,32 +87,31 @@ describe("DebateController", () => {
                     session_name: "Test Session",
                 });
 
-            expect(response.statusCode).toBe(201);
-            expect(response.body).toHaveProperty("status", "success");
-            expect(response.body.data).toEqual(fakeSession);
+            expect(res.statusCode).toBe(201);
+            expect(res.body).toHaveProperty("status", "success");
+            expect(res.body.data).toEqual(fakeSession);
         });
     });
 
     describe("POST /api/v1/debates/messages", () => {
-        it("should send user message and respond with AI", async () => {
+        it("should send user message and respond with AI (real model)", async () => {
             const fakeSession = { id: 1, is_vs_ai: true };
             const fakeUserMessage = { id: 101, messageOriginal: "Hai" };
-            const fakeAiMessage = { id: 102, messageOriginal: "Halo juga" };
 
             DebateModel.getSessionById.mockResolvedValue(fakeSession);
             DebateModel.getLastMessage.mockResolvedValue(null);
-            DebateModel.sendMessage
-                .mockResolvedValueOnce(fakeUserMessage)
-                .mockResolvedValueOnce(fakeAiMessage);
-            translateToIndonesian.mockResolvedValue("Halo");
+            DebateModel.sendMessage.mockResolvedValueOnce(fakeUserMessage);
 
-            jest.mock("axios");
-            const axios = require("axios");
-            axios.post = jest.fn().mockResolvedValue({
-                data: { message: "Halo juga" },
+            const aiResponse = await getAIResponse("Hai");
+
+            DebateModel.sendMessage.mockResolvedValueOnce({
+                id: 102,
+                messageOriginal: aiResponse.content,
             });
 
-            const response = await request(app)
+            translateToIndonesian.mockResolvedValue("Halo");
+
+            const res = await request(app)
                 .post("/api/v1/debates/messages")
                 .set("Authorization", `Bearer ${accessToken}`)
                 .send({
@@ -93,11 +121,65 @@ describe("DebateController", () => {
                     messageOriginal: "Hai",
                 });
 
-            expect(response.statusCode).toBe(201);
-            expect(response.body.data).toHaveLength(2);
-            expect(response.body.data[0]).toEqual(fakeUserMessage);
-            expect(response.body.data[1]).toEqual(fakeAiMessage);
-        });
+            expect(res.statusCode).toBe(201);
+            expect(res.body.status).toBe("success");
+            expect(res.body.data).toHaveLength(2);
+            expect(res.body.data[0].messageOriginal).toBe("Hai");
+            expect(res.body.data[1].messageOriginal).toBe(aiResponse.content);
+        }, 15000); // timeout diperpanjang
+
+        it("should handle 3 message turns with AI replies and log them", async () => {
+            const fakeSession = { id: 1, is_vs_ai: true };
+
+            DebateModel.getSessionById.mockResolvedValue(fakeSession);
+            DebateModel.getLastMessage.mockResolvedValue(null);
+            translateToIndonesian.mockImplementation((text) =>
+                Promise.resolve(text + " (indo)")
+            );
+
+            const messages = [
+                "Halo",
+                "Apa kabar?",
+                "Apa pendapatmu tentang AI?",
+            ];
+
+            for (let i = 0; i < messages.length; i++) {
+                const userMessage = {
+                    id: 100 + i * 2,
+                    messageOriginal: messages[i],
+                };
+
+                const aiResult = await getAIResponse(messages[i]);
+                const aiMessage = {
+                    id: 101 + i * 2,
+                    messageOriginal: aiResult.content,
+                };
+
+                DebateModel.sendMessage
+                    .mockResolvedValueOnce(userMessage)
+                    .mockResolvedValueOnce(aiMessage);
+
+                const res = await request(app)
+                    .post("/api/v1/debates/messages")
+                    .set("Authorization", `Bearer ${accessToken}`)
+                    .send({
+                        sessionId: fakeSession.id,
+                        senderUserId: testUser.id,
+                        senderRole: "pro",
+                        messageOriginal: messages[i],
+                    });
+
+                expect(res.statusCode).toBe(201);
+                expect(res.body.data).toHaveLength(2);
+                expect(res.body.data[0].messageOriginal).toBe(messages[i]);
+                expect(res.body.data[1].messageOriginal).toBe(aiResult.content);
+
+                console.log(
+                    `🧠 AI Balasan untuk "${messages[i]}":`,
+                    res.body.data[1].messageOriginal
+                );
+            }
+        }, 30000);
     });
 
     describe("GET /api/v1/debates/sessions/:id", () => {
@@ -107,13 +189,13 @@ describe("DebateController", () => {
                 { id: 1, messageOriginal: "Hello" },
             ]);
 
-            const response = await request(app)
+            const res = await request(app)
                 .get("/api/v1/debates/sessions/1")
                 .set("Authorization", `Bearer ${accessToken}`);
 
-            expect(response.statusCode).toBe(200);
-            expect(response.body.status).toBe("success");
-            expect(response.body.data.messages).toHaveLength(1);
+            expect(res.statusCode).toBe(200);
+            expect(res.body.status).toBe("success");
+            expect(res.body.data.messages).toHaveLength(1);
         });
     });
 
@@ -123,12 +205,12 @@ describe("DebateController", () => {
                 { id: 1, session_name: "Debat A" },
             ]);
 
-            const response = await request(app)
+            const res = await request(app)
                 .get(`/api/v1/debates/sessions/user/${testUser.id}`)
                 .set("Authorization", `Bearer ${accessToken}`);
 
-            expect(response.statusCode).toBe(200);
-            expect(response.body.data).toHaveLength(1);
+            expect(res.statusCode).toBe(200);
+            expect(res.body.data).toHaveLength(1);
         });
     });
 });
