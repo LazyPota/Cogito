@@ -60,7 +60,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkLogin(username: String, password: String) {
         val session = SessionManager(this)
-        if (username == "admin" && password == "admin") {
+        if (username == "user" && password == "user") {
             session.setLogin(true)
             Toast.makeText(this, "Login Berhasil", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, MainActivity::class.java))

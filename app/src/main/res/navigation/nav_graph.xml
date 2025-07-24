@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.application.appgaruda.ui.fragment.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_issuesFragment"
+            app:destination="@id/issuesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.application.appgaruda.ui.fragment.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/issuesFragment"
+        android:name="com.application.appgaruda.ui.fragment.Issues.IssuesFragment"
+        android:label="fragment_issues"
+        tools:layout="@layout/fragment_issues" >
+        <action
+            android:id="@+id/action_issuesFragment_to_tmpChooseModeFragment"
+            app:destination="@id/tmpChooseModeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tmpChooseModeFragment"
+        android:name="com.application.appgaruda.ui.fragment.tmp_choose_mode.TmpChooseModeFragment"
+        android:label="fragment_tmp_choose_mode"
+        tools:layout="@layout/fragment_tmp_choose_mode" />
+</navigation>
