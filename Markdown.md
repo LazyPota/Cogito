@@ -1,4 +1,4 @@
-## 1. Ad Hominem (Personal Attack)
+## 3.1 Ad Hominem (Personal Attack)
 ### ID & Alias
 - FALLACY_AD_HOMINEM; Personal Attack, Argumentum ad Hominem.
 
@@ -32,7 +32,7 @@
 
 ---
 
-## 2. Strawman
+## 3.2 Strawman
 ### ID & Alias
 - FALLACY_STRAWMAN; Strawman Argument.
 
@@ -66,7 +66,7 @@
 
 ---
 
-## 3. Hasty Generalization
+## 3.3 Hasty Generalization
 ### ID & Alias
 - FALLACY_HASTY_GEN; Overgeneralization.
 
@@ -96,7 +96,7 @@
 
 ---
 
-## 4. Slippery Slope
+## 3.4 Slippery Slope
 ### ID & Alias
 - FALLACY_SLIPPERY.
 
@@ -126,7 +126,7 @@
 
 ---
 
-## 5. Circular Reasoning
+## 3.5 Circular Reasoning
 ### ID & Alias
 - FALLACY_CIRCULAR; Begging the Question.
 
@@ -153,7 +153,7 @@
 
 ---
 
-## 6. False Dilemma
+## 3.6 False Dilemma
 ### ID & Alias
 - FALLACY_FALSE_DILEMMA; False Dichotomy.
 
@@ -180,7 +180,7 @@
 
 ---
 
-## 7. Red Herring
+## 3.7 Red Herring
 ### ID & Alias
 - FALLACY_RED_HERRING.
 
@@ -207,7 +207,7 @@
 
 ---
 
-## 8. Appeal to Authority
+## 3.8 Appeal to Authority
 ### ID & Alias
 - FALLACY_APPEAL_AUTH; Argumentum ad Verecundiam.
 
@@ -234,7 +234,7 @@
 
 ---
 
-## 9. Bandwagon
+## 3.9 Bandwagon
 ### ID & Alias
 - FALLACY_BANDWAGON; Argumentum ad Populum, Appeal to Popularity.
 
