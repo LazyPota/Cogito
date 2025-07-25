@@ -110,7 +110,6 @@ const DebateController = {
                 const messageInEnglish = await translateToEnglish(
                     messageOriginal
                 );
-                console.log("💬 ENGLISH TRANSLATION RESULT:", messageInEnglish);
                 const aiResult = await getAIResponse(messageInEnglish);
                 const aiOriginal =
                     aiResult.content || "Sorry, We can't reply at this time..";
