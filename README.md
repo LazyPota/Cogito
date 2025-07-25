@@ -14,7 +14,7 @@ cogito-backend/
 │   ├── .gitignore
 │   └── app.py                  # Entry point
 │
-├── llama-setup/               # Integrasi dengan LLM (JavaScript/Node.js)
+├── llama-setup/               # Integrasi dengan LLM (Node.js/Express)
 │   ├── node_modules/
 │   ├── src/                    # Kode sumber untuk LLM wrapper/handler
 │   ├── .env
