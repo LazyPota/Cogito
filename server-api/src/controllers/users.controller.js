@@ -4,7 +4,7 @@ const UserController = {
     // GET /api/v1/users
     async getAll(req, res) {
         try {
-            const users = await UserModel.getAllUsers();
+            const users = await UserModel.getAll();
             return res.json({
                 status: "success",
                 data: users,
@@ -22,7 +22,7 @@ const UserController = {
     async getByUsername(req, res) {
         try {
             const { username } = req.params;
-            const user = await UserModel.findUserByUsername(username);
+            const user = await UserModel.findByUsername(username);
 
             if (!user) {
                 return res.status(404).json({

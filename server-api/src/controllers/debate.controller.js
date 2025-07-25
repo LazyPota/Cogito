@@ -19,7 +19,6 @@ const DebateController = {
                 session_name,
             } = req.body;
 
-            // Validasi parameter wajib
             if (!issue_id || !pro_user_id || !session_name) {
                 return res.status(400).json({
                     status: "fail",
@@ -158,6 +157,13 @@ const DebateController = {
                 return res.status(404).json({
                     status: "fail",
                     message: "Debate session not found",
+                });
+            }
+
+            if (session.status === "nonactive") {
+                return res.status(403).json({
+                    status: "fail",
+                    message: "You cannot send messages in a nonactive session.",
                 });
             }
 
