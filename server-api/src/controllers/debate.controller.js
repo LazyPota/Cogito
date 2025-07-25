@@ -19,6 +19,7 @@ const DebateController = {
                 session_name,
             } = req.body;
 
+            // Validasi parameter wajib
             if (!issue_id || !pro_user_id || !session_name) {
                 return res.status(400).json({
                     status: "fail",
@@ -73,9 +74,20 @@ const DebateController = {
                     });
 
                     try {
+                        // Mendapatkan balasan dari AI
                         const aiRawResponse = await getAIResponse(
                             userMessageTranslated
-                        );
+                        ).catch((err) => {
+                            console.error(
+                                "❌ Error in AI first reply:",
+                                err.message
+                            );
+                            return {
+                                content:
+                                    "Maaf, saya tidak dapat membalas saat ini.",
+                            }; // Fallback
+                        });
+
                         const aiOriginal =
                             aiRawResponse.content ||
                             "Maaf, saya tidak dapat membalas saat ini.";
@@ -87,16 +99,13 @@ const DebateController = {
 
                         await DebateModel.sendMessage({
                             sessionId: session.id,
-                            senderUserId: null,
+                            senderUserId: null, // AI tidak memiliki user ID
                             senderRole: aiRole,
                             messageOriginal: aiOriginal,
                             messageTranslated: aiTranslated,
                         });
                     } catch (err) {
-                        console.error(
-                            "❌ Error in AI first reply:",
-                            err.message
-                        );
+                        console.error("❌ Error in AI response:", err.message);
                     }
                 }
             } else if (contra_user_id) {
@@ -135,6 +144,7 @@ const DebateController = {
             const { sessionId, senderUserId, senderRole, messageOriginal } =
                 req.body;
 
+            // Validasi parameter wajib
             if (!sessionId || !senderRole || !messageOriginal) {
                 return res.status(400).json({
                     status: "fail",
@@ -165,6 +175,7 @@ const DebateController = {
             }
 
             const messageTranslated = await translateToEnglish(messageOriginal);
+
             const userMessage = await DebateModel.sendMessage({
                 sessionId,
                 senderUserId,
@@ -183,19 +194,24 @@ const DebateController = {
                 );
                 const score = flaskRes.data?.scores?.final;
                 analysisScore = Math.max(1, Math.min(100, score));
+                console.log("User Message Analysis Score: ", analysisScore);
             } catch (err) {
                 console.error("Flask analysis error:", err.message);
             }
 
             if (req.io) {
-                req.io.to(sessionId).emit("receiveMessage", {
-                    message: userMessage,
-                });
+                req.io
+                    .to(sessionId)
+                    .emit("receiveMessage", { message: userMessage });
             }
 
             if (session.is_vs_ai) {
                 const aiInput = await translateToEnglish(messageOriginal);
-                const aiRes = await getAIResponse(aiInput);
+                const aiRes = await getAIResponse(aiInput).catch((err) => {
+                    console.error("❌ Error in AI response:", err.message);
+                    return { content: "Sorry, We can't reply at this time.." }; // Fallback
+                });
+
                 const aiOriginal =
                     aiRes.content || "Sorry, We can't reply at this time..";
                 const aiTranslated = await translateToIndonesian(aiOriginal);
@@ -220,36 +236,34 @@ const DebateController = {
                     );
                     const score = flaskRes.data?.scores?.final;
                     aiAnalysisScore = Math.max(1, Math.min(100, score));
+                    console.log(
+                        "AI Response Analysis Score: ",
+                        aiAnalysisScore
+                    );
                 } catch (err) {
                     console.error("Flask analysis error (AI):", err.message);
                 }
 
                 if (req.io) {
-                    req.io.to(sessionId).emit("receiveMessage", {
-                        message: aiMessage,
-                    });
+                    req.io
+                        .to(sessionId)
+                        .emit("receiveMessage", { message: aiMessage });
                 }
 
-                if (aiAnalysisScore !== null) {
-                    const xpGain = Math.floor(aiAnalysisScore / 10);
+                const xpGain = Math.floor(aiAnalysisScore);
 
-                    try {
-                        if (session.pro_user_id) {
-                            await DebateModel.updateUserXP(
-                                session.pro_user_id,
-                                xpGain
-                            );
-                        }
-
-                        if (session.contra_user_id) {
-                            await DebateModel.updateUserXP(
-                                session.contra_user_id,
-                                xpGain
-                            );
-                        }
-                    } catch (err) {
-                        console.error("Error updating user XP:", err.message);
-                    }
+                try {
+                    console.log(
+                        "Updating user XP for both pro and contra users..."
+                    );
+                    await DebateModel.updateUserXP(session.pro_user_id, xpGain);
+                    await DebateModel.updateUserXP(
+                        session.contra_user_id,
+                        xpGain
+                    );
+                    console.log("XP update attempted.");
+                } catch (err) {
+                    console.error("Error updating user XP:", err.message);
                 }
 
                 return res.status(201).json({
@@ -260,6 +274,19 @@ const DebateController = {
                         { ...aiMessage, analysisScore: aiAnalysisScore },
                     ],
                 });
+            }
+
+            const xpGain = Math.floor(analysisScore);
+
+            try {
+                console.log(
+                    "Updating user XP for both pro and contra users..."
+                );
+                await DebateModel.updateUserXP(session.pro_user_id, xpGain);
+                await DebateModel.updateUserXP(session.contra_user_id, xpGain);
+                console.log("XP update attempted.");
+            } catch (err) {
+                console.error("Error updating user XP:", err.message);
             }
 
             return res.status(201).json({

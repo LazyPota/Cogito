@@ -120,16 +120,29 @@ const DebateModel = {
 
     async updateUserXP(userId, xpGain) {
         try {
-            await pool.query(`UPDATE users SET xp = xp + $1 WHERE id = $2`, [
-                xpGain,
-                userId,
-            ]);
+            console.log(
+                `Attempting to update XP for user ${userId} by ${xpGain}`
+            );
+
+            const result = await pool.query(
+                `UPDATE users SET xp = xp + $1 WHERE id = $2 RETURNING xp`,
+                [xpGain, userId]
+            );
+
+            if (result.rows.length > 0) {
+                console.log(
+                    `Updated XP for user ${userId}: ${result.rows[0].xp}`
+                );
+                return result.rows[0].xp;
+            } else {
+                console.error(`No rows updated for user ${userId}`);
+                return null;
+            }
         } catch (err) {
-            console.error("Error updating user XP:", err.message);
+            console.error("Error updating XP:", err.message);
             throw err;
         }
     },
-
     async nonactiveSession(sessionId) {
         await pool.query(
             `UPDATE debate_sessions
