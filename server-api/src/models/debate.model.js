@@ -120,7 +120,7 @@ const DebateModel = {
 
     async updateUserXP(userId, xpGain) {
         try {
-            await db.query(`UPDATE users SET xp = xp + $1 WHERE id = $2`, [
+            await pool.query(`UPDATE users SET xp = xp + $1 WHERE id = $2`, [
                 xpGain,
                 userId,
             ]);
