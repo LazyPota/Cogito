@@ -21,12 +21,16 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/issuesFragment"
-        android:name="com.application.appgaruda.ui.fragment.Issues.IssuesFragment"
+        android:name="com.application.appgaruda.ui.fragment.issues.IssuesFragment"
         android:label="fragment_issues"
         tools:layout="@layout/fragment_issues" >
         <action
             android:id="@+id/action_issuesFragment_to_tmpChooseModeFragment"
-            app:destination="@id/tmpChooseModeFragment" />
+            app:destination="@id/tmpChooseModeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="side"
             app:argType="string" />
@@ -39,5 +43,23 @@
         android:id="@+id/tmpChooseModeFragment"
         android:name="com.application.appgaruda.ui.fragment.tmp_choose_mode.TmpChooseModeFragment"
         android:label="fragment_tmp_choose_mode"
-        tools:layout="@layout/fragment_tmp_choose_mode" />
+        tools:layout="@layout/fragment_tmp_choose_mode" >
+
+        <action
+            android:id="@+id/action_tmpChooseModeFragment_to_createActivity"
+            app:destination="@id/createActivity"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+    <activity
+        android:id="@+id/chatActivity"
+        android:name="com.application.appgaruda.ui.activity.ChatActivity"
+        android:label="activity_chat"
+        tools:layout="@layout/activity_chat" />
+    <activity
+        android:id="@+id/createActivity"
+        android:name="com.application.appgaruda.ui.activity.CreateActivity"
+        android:label="CreateActivity" />
 </navigation>

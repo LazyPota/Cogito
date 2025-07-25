@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/box_bg_home_2"
+    android:background="@drawable/gradient_bg"
     android:padding="16dp"
     android:layout_marginBottom="12dp"
     app:layout_constraintEnd_toEndOf="parent"
@@ -14,9 +14,10 @@
         android:id="@+id/Tag_Level"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/inter_medium"
-        android:text="Begginer"
+        android:fontFamily="@font/inter_bold"
+        android:text="Click To See Detail"
         android:textSize="14sp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,27 +30,22 @@
         android:fontFamily="@font/inter_medium"
         android:text="AI in healthcare"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Tag_Level" />
 
-    <Button
-        android:id="@+id/btn_start_pick"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/deskrip_singkat"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@drawable/box_bg_home"
-        android:backgroundTint="#4CAF50"
-        android:elevation="4dp"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:letterSpacing="0.05"
-        android:padding="8dp"
-        android:text="Start"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/inter_medium"
+        android:text="lorem ipsum dolor sit amet"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="@color/neutral_800"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Judul" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

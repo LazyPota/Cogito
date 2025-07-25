@@ -9,5 +9,4 @@ data class RegisterResponse(
 data class UserData(
     val id: String,
     val username: String,
-    val email: String
 )

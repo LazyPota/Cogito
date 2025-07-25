@@ -6,8 +6,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.application.appgaruda.R
 import com.application.appgaruda.data.api.RetrofitClient
 import com.application.appgaruda.data.repository.AuthRepository
@@ -18,30 +18,40 @@ import com.application.appgaruda.ui.viewmodel.AuthViewModelFactory
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var sessionManager: SessionManager
-
-    private val viewModel: AuthViewModel by viewModels {
-        AuthViewModelFactory(AuthRepository(RetrofitClient.apiService))
-    }
+    private lateinit var viewModel: AuthViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // 1️⃣ Inisialisasi SessionManager dulu
         sessionManager = SessionManager(this)
 
+        // 2️⃣ Setelah sessionManager siap, buat ApiService, Repository, Factory, lalu ViewModel
+        val apiService = RetrofitClient.getApiService(sessionManager)
+        val repository = AuthRepository(apiService)
+        val factory = AuthViewModelFactory(repository)
+        viewModel = ViewModelProvider(this, factory)[AuthViewModel::class.java]
+
+        // 3️⃣ Setup UI references
         val etUsername = findViewById<EditText>(R.id.tvUsername)
         val etPassword = findViewById<EditText>(R.id.tvPassword)
         val btnLogin = findViewById<Button>(R.id.btnLogin)
-        val btnRegister = findViewById<Button>(R.id.btnRegister)
+        val btnRegister = findViewById<TextView>(R.id.btnRegister)
 
         btnRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
+            finish()
         }
 
         btnLogin.setOnClickListener {
-            val username = etUsername.text.toString()
-            val password = etPassword.text.toString()
-            viewModel.login(username, password)
+            val username = etUsername.text.toString().trim()
+            val password = etPassword.text.toString().trim()
+            if (username.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "Username & password wajib diisi", Toast.LENGTH_SHORT).show()
+            } else {
+                viewModel.login(username, password)
+            }
         }
 
         observeViewModel()
@@ -53,18 +63,19 @@ class LoginActivity : AppCompatActivity() {
                 val user = response.body()!!.data!!.user
                 val token = response.body()!!.data!!.token
 
+                // Simpan session
                 sessionManager.saveSession(
                     token,
                     user.id,
-                    user.username,
-                    user.email
+                    user.username
                 )
 
                 Toast.makeText(this, "Login berhasil!", Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, MainActivity::class.java))
                 finish()
             } else {
-                Toast.makeText(this, "Login gagal: ${response.body()?.message ?: response.message()}", Toast.LENGTH_LONG).show()
+                val message = response.body()?.message ?: response.message()
+                Toast.makeText(this, "Login gagal: $message", Toast.LENGTH_LONG).show()
             }
         }
     }

@@ -12,16 +12,14 @@ class SessionManager(context: Context) {
         private const val PREF_NAME = "user_session"
         private const val KEY_TOKEN = "token"
         private const val KEY_USERNAME = "username"
-        private const val KEY_EMAIL = "email"
         private const val KEY_USER_ID = "user_id"
     }
 
-    fun saveSession(token: String, id: Int, username: String, email: String) {
+    fun saveSession(token: String, id: Int, username: String) {
         prefs.edit()
             .putString(KEY_TOKEN, token)
             .putInt(KEY_USER_ID, id)
             .putString(KEY_USERNAME, username)
-            .putString(KEY_EMAIL, email)
             .apply()
     }
 
@@ -35,10 +33,6 @@ class SessionManager(context: Context) {
 
     fun getUsername(): String? {
         return prefs.getString(KEY_USERNAME, "Cannot Catch Username")
-    }
-
-    fun getEmail(): String? {
-        return prefs.getString(KEY_EMAIL, null)
     }
 
     fun clearSession() {

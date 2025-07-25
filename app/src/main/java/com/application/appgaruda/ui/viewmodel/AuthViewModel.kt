@@ -28,10 +28,10 @@ class AuthViewModel(private val repo: AuthRepository) : ViewModel() {
     val registerResult: LiveData<Response<RegisterResponse>> = _registerResult
 
 
-    fun register(username: String, email: String, password: String) {
+    fun register(username: String, password: String) {
         viewModelScope.launch {
             try {
-                val response = repo.register(RegisterRequest(username, email, password))
+                val response = repo.register(RegisterRequest(username, password))
                 _registerResult.postValue(response)
                 Log.d("RegisterResponse", response.toString())
             } catch (e: Exception) {
