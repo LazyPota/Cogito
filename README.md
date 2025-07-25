@@ -10,9 +10,9 @@ Repositori ini berisi backend dari proyek **Cogitu**, yang terdiri dari beberapa
 ```
 cogito-backend/
 ├── analytical-setup/           # Setup model analitik (Python)
-│   └── fallacy_detector_model/ # Model deteksi kesesatan logika
+│   └── fallacy_detector_model/ # Model
 │   ├── .gitignore
-│   └── app.py                  # Entry point FastAPI (kemungkinan)
+│   └── app.py                  # Entry point
 │
 ├── llama-setup/               # Integrasi dengan LLM (JavaScript/Node.js)
 │   ├── node_modules/
@@ -31,8 +31,7 @@ cogito-backend/
 │   ├── .env.test
 │   ├── .gitignore
 │   ├── package.json
-│   ├── package-lock.json
-│   └── test.js                 # Skrip testing
+│   └── package-lock.json
 ```
 
 ## Requirements
