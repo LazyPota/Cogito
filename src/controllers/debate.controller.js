@@ -1,5 +1,8 @@
 const { getAIResponse } = require("../services/llama.service");
-const { translateToIndonesian } = require("../services/translate.service");
+const {
+    translateToIndonesian,
+    translateToEnglish,
+} = require("../services/translate.service");
 const DebateModel = require("../models/debate.model");
 
 const DebateController = {
@@ -104,7 +107,10 @@ const DebateController = {
             }
 
             if (session.is_vs_ai) {
-                const aiResult = await getAIResponse(messageOriginal);
+                const messageInEnglish = await translateToEnglish(
+                    messageOriginal
+                );
+                const aiResult = await getAIResponse(messageInEnglish);
                 const aiOriginal =
                     aiResult.content || "Sorry, We can't reply at this time..";
                 const aiTranslated = await translateToIndonesian(aiOriginal);

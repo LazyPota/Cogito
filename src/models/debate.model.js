@@ -90,7 +90,7 @@ const DebateModel = {
 
     async getLastMessage(sessionId) {
         const result = await pool.query(
-            `SELECT * FROM debate_messages
+            `SELECT * FROM debates
          WHERE session_id = $1
          ORDER BY created_at DESC
          LIMIT 1`,
