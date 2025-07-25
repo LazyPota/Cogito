@@ -89,7 +89,7 @@ const DebateController = {
                 });
             }
 
-            const messageTranslated = await translateToIndonesian(
+            const messageTranslated = await translateToEnglish(
                 messageOriginal
             );
             const userMessage = await DebateModel.sendMessage({
@@ -110,10 +110,12 @@ const DebateController = {
                 const messageInEnglish = await translateToEnglish(
                     messageOriginal
                 );
+                console.log("💬 ENGLISH TRANSLATION RESULT:", messageInEnglish);
                 const aiResult = await getAIResponse(messageInEnglish);
                 const aiOriginal =
                     aiResult.content || "Sorry, We can't reply at this time..";
                 const aiTranslated = await translateToIndonesian(aiOriginal);
+                
                 const aiRole = senderRole === "pro" ? "contra" : "pro";
 
                 const aiMessage = await DebateModel.sendMessage({
@@ -162,10 +164,9 @@ const DebateController = {
                     message: "Debate session not found",
                 });
             }
-            const messages = await DebateModel.getMessagesBySession(id);
             return res.json({
                 status: "success",
-                data: { ...session, messages },
+                data: { ...session },
             });
         } catch (error) {
             console.error("Error getting session:", error);
