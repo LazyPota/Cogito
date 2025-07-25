@@ -40,13 +40,22 @@ cogito-backend/
 ### analytical-setup (Python)
 
 * Python >= 3.8
-* FastAPI (jika digunakan)
-* Library NLP seperti `transformers`, `sklearn`, dll
+* Library seperti `flask`, `transformers`, dll (Lebih lengkap di `./fallacy_detector_model/requirements.py`)
 
 ### llama-setup & server-api (Node.js)
 
 * Node.js >= 18.x
 * npm
+
+
+## Persiapan Model
+
+Sebelum menjalankan proyek, pastikan model sudah ditempatkan di direktori berikut:
+
+* **LLM Model** untuk `llama-setup/models`: [Download di Google Drive]([https://drive.google.com/your-llama-model-link](https://drive.google.com/file/d/1s0heZxDeNMjEMmox8Kr996BDyLFTFFxb/view?usp=drive_link))
+* **Fallacy Detection Model** untuk `analytical-setup/fallacy_detector_model`: [Download di Google Drive]([https://drive.google.com/your-fallacy-model-link](https://drive.google.com/file/d/1GuTuHzaYnP82evxqF-kUOLq9xfLIDHj1/view?usp=sharing))
+
+Silakan ekstrak file model ke direktori yang sesuai setelah mengunduhnya.
 
 ## Cara Menjalankan
 
@@ -75,14 +84,6 @@ npm run migrate up
 npm start
 ```
 
-## Persiapan Model
-
-Sebelum menjalankan proyek, pastikan model sudah ditempatkan di direktori berikut:
-
-* **LLM Model** untuk `llama-setup/models`: [Download di Google Drive]([https://drive.google.com/your-llama-model-link](https://drive.google.com/file/d/1s0heZxDeNMjEMmox8Kr996BDyLFTFFxb/view?usp=drive_link))
-* **Fallacy Detection Model** untuk `analytical-setup/fallacy_detector_model`: [Download di Google Drive]([https://drive.google.com/your-fallacy-model-link](https://drive.google.com/file/d/1GuTuHzaYnP82evxqF-kUOLq9xfLIDHj1/view?usp=sharing))
-
-Silakan ekstrak file model ke direktori yang sesuai setelah mengunduhnya.
 
 ## Catatan
 
