@@ -1,32 +1,31 @@
 
 
-
 # Cogito Backend
 
-Repositori ini berisi backend dari proyek **Cogitu**, yang terdiri dari beberapa komponen utama untuk menangani model analitik, integrasi model LLM, dan server API utama.
+This repository contains the backend of the **Cogito** project, which consists of several main components for handling analytical models, LLM model integration, and the main API server.
 
-## Struktur Folder
+## Folder Structure
 
 ```
 cogito-backend/
-├── analytical-setup/           # Setup model analitik (Python)
+├── analytical-setup/           # Analytical model setup (Python)
 │   └── fallacy_detector_model/ # Model
 │   ├── .gitignore
 │   └── app.py                  # Entry point
 │
-├── llama-setup/               # Integrasi dengan LLM (Node.js/Express)
+├── llama-setup/               # Integration with LLM (Node.js/Express)
 │   ├── node_modules/
-│   ├── src/                    # Kode sumber untuk LLM wrapper/handler
+│   ├── src/                    # Source code for LLM wrapper/handler
 │   ├── .env
 │   ├── .gitignore
 │   ├── package.json
 │   └── package-lock.json
 │
-├── server-api/                # Backend utama (Node.js/Express)
-│   ├── migrations/             # Berisi skrip migrasi database
+├── server-api/                # Main backend (Node.js/Express)
+│   ├── migrations/             # Contains database migration scripts
 │   ├── node_modules/
-│   ├── scripts/                # Skrip tambahan
-│   ├── src/                    # Kode utama aplikasi
+│   ├── scripts/                # Additional scripts
+│   ├── src/                    # Main application code
 │   ├── .env
 │   ├── .env.test
 │   ├── .gitignore
@@ -39,7 +38,7 @@ cogito-backend/
 ### analytical-setup (Python)
 
 * Python >= 3.8
-* Library seperti `flask`, `transformers`, dll (Lebih lengkap di `./fallacy_detector_model/requirements.py`)
+* Libraries such as `flask`, `transformers`, etc. (More details in `./fallacy_detector_model/requirements.py`)
 
 ### llama-setup & server-api (Node.js)
 
@@ -47,18 +46,18 @@ cogito-backend/
 * npm
 
 
-## Persiapan Model
+## Model Preparation
 
-Sebelum menjalankan proyek, pastikan model sudah ditempatkan di direktori berikut:
+Before running the project, make sure the model is placed in the following directory:
 
-* **LLM Model** untuk `llama-setup/models`: [Download di Google Drive]([https://drive.google.com/your-llama-model-link](https://drive.google.com/file/d/1s0heZxDeNMjEMmox8Kr996BDyLFTFFxb/view?usp=drive_link))
-* **Fallacy Detection Model** untuk `analytical-setup/fallacy_detector_model`: [Download di Google Drive]([https://drive.google.com/your-fallacy-model-link](https://drive.google.com/file/d/1GuTuHzaYnP82evxqF-kUOLq9xfLIDHj1/view?usp=sharing))
+* **LLM Model** for `llama-setup/models`: [Download on Google Drive](https://drive.google.com/your-llama-model-link](https://drive.google.com/file/d/1s0heZxDeNMjEMmox8Kr996BDyLFTFFxb/view?usp=drive_link)
+* **Fallacy Detection Model** for `analytical-setup/fallacy_detector_model`: [Download on Google Drive](https://drive.google.com/your-fallacy-model-link](https://drive.google.com/file/d/1GuTuHzaYnP82evxqF-kUOLq9xfLIDHj1/view?usp=sharing)
 
-Silakan ekstrak file model ke direktori yang sesuai setelah mengunduhnya.
+Please extract the model file to the appropriate directory after downloading it.
 
-## Cara Menjalankan
+## How to Run
 
-### 1. Jalankan analytical-setup
+### 1. Run analytical-setup
 
 ```bash
 cd analytical-setup
@@ -66,7 +65,7 @@ pip install -r ./fallacy_detector_model/requirements.py
 python app.py
 ```
 
-### 2. Jalankan llama-setup
+### 2. Run llama-setup
 
 ```bash
 cd llama-setup
@@ -74,7 +73,7 @@ npm install
 npm start
 ```
 
-### 3. Jalankan server-api
+### 3. Run server-api
 
 ```bash
 cd server-api
@@ -84,13 +83,14 @@ npm start
 ```
 
 
-## Catatan
+## Notes
 
-* Pastikan file `.env` tersedia di setiap komponen (`llama-setup` dan `server-api`).
-* Pastikan file `.env` tersedia di setiap komponen (`llama-setup` dan `server-api`).
-* Untuk testing bisa menggunakan file `.env.test` di `server-api`.
-* Struktur bisa berubah tergantung implementasi final.
+* Ensure that the `.env` file is available in each component (`llama-setup` and `server-api`).
+* For testing, you can use the `.env.test` file in `server-api`.
+* The structure may change depending on the final implementation.
 
-## Lisensi
+## License
 
 MIT License
+
+Translated with DeepL.com (free version)
