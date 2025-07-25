@@ -50,8 +50,8 @@ cogito-backend/
 
 Before running the project, make sure the model is placed in the following directory:
 
-* **LLM Model** for `llama-setup/models`: [Download on Google Drive](https://drive.google.com/your-llama-model-link](https://drive.google.com/file/d/1s0heZxDeNMjEMmox8Kr996BDyLFTFFxb/view?usp=drive_link)
-* **Fallacy Detection Model** for `analytical-setup/fallacy_detector_model`: [Download on Google Drive](https://drive.google.com/your-fallacy-model-link](https://drive.google.com/file/d/1GuTuHzaYnP82evxqF-kUOLq9xfLIDHj1/view?usp=sharing)
+* **LLM Model** for `llama-setup/models`: [Download on Google Drive](https://drive.google.com/file/d/1s0heZxDeNMjEMmox8Kr996BDyLFTFFxb/view?usp=drive_link)
+* **Fallacy Detection Model** for `analytical-setup/fallacy_detector_model`: [Download on Google Drive](https://drive.google.com/file/d/1GuTuHzaYnP82evxqF-kUOLq9xfLIDHj1/view?usp=sharing)
 
 Please extract the model file to the appropriate directory after downloading it.
 
