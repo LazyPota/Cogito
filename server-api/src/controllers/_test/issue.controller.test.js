@@ -1,7 +1,7 @@
 const request = require("supertest");
 const jwt = require("jsonwebtoken");
-const db = require("../../../src/db/pool");
-const app = require("../../../src/app");
+const db = require("../../db/pool");
+const app = require("../../app");
 
 const testUser = {
     id: null,

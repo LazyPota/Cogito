@@ -1,4 +1,4 @@
-const { translateToIndonesian } = require("../services/translate.service");
+const { translateToIndonesian } = require("./translate.service");
 const DebateModel = require("../models/debate.model");
 const axios = require("axios");
 
