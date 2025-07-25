@@ -43,7 +43,8 @@ cogito-backend/
 ### llama-setup & server-api (Node.js)
 
 * Node.js >= 18.x
-* npm
+* PostgreSQL
+* `npm`, `node-pg-migrate`, and other
 
 
 ## Model Preparation
