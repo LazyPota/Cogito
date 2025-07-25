@@ -128,6 +128,7 @@ const DebateController = {
                 message: "Debate session created successfully",
                 data: session,
             });
+            
         } catch (error) {
             console.error("Error creating debate session:", error);
             return res.status(500).json({
