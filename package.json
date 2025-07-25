@@ -22,10 +22,11 @@
         "migrate:test": "cross-env NODE_ENV=test node scripts/run-migrate.js"
     },
     "dependencies": {
+        "@kreisler/js-google-translate-free": "^4.0.2",
         "axios": "^1.10.0",
         "bcrypt": "^6.0.0",
         "dotenv": "^16.6.1",
-        "express": "^4.18.2",
+        "express": "^4.21.2",
         "jsonwebtoken": "^9.0.2",
         "multer": "^2.0.2",
         "node-cron": "^4.2.1",

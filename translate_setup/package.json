@@ -1,17 +1,16 @@
 {
-  "name": "llama-setup",
+  "name": "translate_setup",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
   "author": "",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node src/index.js"
   },
   "dependencies": {
     "@vitalets/google-translate-api": "^9.2.1",
-    "node-llama-cpp": "^3.10.0"
+    "express": "^5.1.0"
   }
 }
