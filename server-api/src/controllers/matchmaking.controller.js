@@ -29,11 +29,11 @@ const MatchmakingController = {
         }
     },
 
-    // DELETE /api/v1/matchmaking/cancel
-    async cancelMatch(req, res) {
+    // DELETE /api/v1/matchmaking/nonactivate
+    async nonactivatingMatch(req, res) {
         try {
             const userId = req.user.id;
-            const success = await matchmakingService.cancelMatch(userId);
+            const success = await matchmakingService.nonactivatingMatch(userId);
 
             if (!success) {
                 return res.status(404).json({
@@ -44,10 +44,10 @@ const MatchmakingController = {
 
             return res.json({
                 status: "success",
-                message: "Matchmaking cancelled",
+                message: "Matchmaking nonactive",
             });
         } catch (error) {
-            console.error("Error cancelling match:", error);
+            console.error("Error nonactivating match:", error);
             return res.status(500).json({
                 status: "error",
                 message: "Internal Server Error",

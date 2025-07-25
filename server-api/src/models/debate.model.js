@@ -118,10 +118,22 @@ const DebateModel = {
         return parseInt(result.rows[0].count, 10);
     },
 
-    async cancelSession(sessionId) {
+    async updateUserXP(userId, xpGain) {
+        try {
+            await db.query(`UPDATE users SET xp = xp + $1 WHERE id = $2`, [
+                xpGain,
+                userId,
+            ]);
+        } catch (err) {
+            console.error("Error updating user XP:", err.message);
+            throw err;
+        }
+    },
+
+    async nonactiveSession(sessionId) {
         await pool.query(
             `UPDATE debate_sessions
-       SET status = 'cancelled', updated_at = current_timestamp
+       SET status = 'nonactive', updated_at = current_timestamp
        WHERE id = $1`,
             [sessionId]
         );

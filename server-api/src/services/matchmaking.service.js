@@ -32,7 +32,7 @@ async function matchUser(userId, issueId) {
     return { status: "matched", sessionId: session.id };
 }
 
-function cancelMatch(userId) {
+function nonactivatingMatch(userId) {
     const index = waitingQueue.findIndex((entry) => entry.userId === userId);
     if (index !== -1) {
         waitingQueue.splice(index, 1);
@@ -48,6 +48,6 @@ function getStatus(userId) {
 
 module.exports = {
     matchUser,
-    cancelMatch,
+    nonactivatingMatch,
     getStatus,
 };

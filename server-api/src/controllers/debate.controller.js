@@ -230,6 +230,28 @@ const DebateController = {
                     });
                 }
 
+                if (aiAnalysisScore !== null) {
+                    const xpGain = Math.floor(aiAnalysisScore / 10);
+
+                    try {
+                        if (session.pro_user_id) {
+                            await DebateModel.updateUserXP(
+                                session.pro_user_id,
+                                xpGain
+                            );
+                        }
+
+                        if (session.contra_user_id) {
+                            await DebateModel.updateUserXP(
+                                session.contra_user_id,
+                                xpGain
+                            );
+                        }
+                    } catch (err) {
+                        console.error("Error updating user XP:", err.message);
+                    }
+                }
+
                 return res.status(201).json({
                     status: "success",
                     message: "AI responded",
@@ -296,7 +318,7 @@ const DebateController = {
         }
     },
 
-    // GET /api/v1/debates/surrender
+    // POST /api/v1/debates/sessions/:id/surrender/
     async endTheSession(req, res) {
         try {
             const { id } = req.params;
@@ -320,16 +342,7 @@ const DebateController = {
                 });
             }
 
-            const count = await DebateModel.getUserMessageCount(id, userId);
-            if (count < 5) {
-                return res.status(403).json({
-                    status: "fail",
-                    message:
-                        "You can only surrender after sending at least 5 messages.",
-                });
-            }
-
-            await DebateModel.cancelSession(id);
+            await DebateModel.nonactiveSession(id);
 
             return res.json({
                 status: "success",

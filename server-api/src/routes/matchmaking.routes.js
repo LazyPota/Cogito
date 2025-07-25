@@ -6,7 +6,7 @@ const authMiddleware = require("../middlewares/auth.middleware");
 router.use(authMiddleware);
 
 router.post("/find", MatchmakingController.findMatch);
-router.delete("/cancel", MatchmakingController.cancelMatch);
+router.delete("/nonactive", MatchmakingController.nonactivatingMatch);
 router.get("/status", MatchmakingController.getStatus);
 
 module.exports = router;
