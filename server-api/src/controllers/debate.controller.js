@@ -4,6 +4,8 @@ const {
     translateToEnglish,
 } = require("../services/translate.service");
 const DebateModel = require("../models/debate.model");
+const IssueModel = require("../models/issue.model");
+const axios = require("axios");
 
 const DebateController = {
     // POST /api/v1/debates/sessions
@@ -39,6 +41,79 @@ const DebateController = {
                 session_name,
                 status: sessionStatus,
             });
+
+            const issue = await IssueModel.getById(issue_id);
+            if (!issue) {
+                return res.status(404).json({
+                    status: "fail",
+                    message: "Issue not found",
+                });
+            }
+
+            if (is_vs_ai) {
+                const senderRole = contra_user_id ? "contra" : "pro";
+                const senderUserId =
+                    senderRole === "pro" ? pro_user_id : contra_user_id;
+                const userMessageOriginal =
+                    senderRole === "pro"
+                        ? issue.pro_first_message
+                        : issue.contra_first_message;
+
+                if (userMessageOriginal) {
+                    const userMessageTranslated = await translateToEnglish(
+                        userMessageOriginal
+                    );
+
+                    const userMessage = await DebateModel.sendMessage({
+                        sessionId: session.id,
+                        senderUserId,
+                        senderRole,
+                        messageOriginal: userMessageOriginal,
+                        messageTranslated: userMessageTranslated,
+                    });
+
+                    try {
+                        const aiRawResponse = await getAIResponse(
+                            userMessageTranslated
+                        );
+                        const aiOriginal =
+                            aiRawResponse.content ||
+                            "Maaf, saya tidak dapat membalas saat ini.";
+                        const aiTranslated = await translateToIndonesian(
+                            aiOriginal
+                        );
+
+                        const aiRole = senderRole === "pro" ? "contra" : "pro";
+
+                        await DebateModel.sendMessage({
+                            sessionId: session.id,
+                            senderUserId: null,
+                            senderRole: aiRole,
+                            messageOriginal: aiOriginal,
+                            messageTranslated: aiTranslated,
+                        });
+                    } catch (err) {
+                        console.error(
+                            "❌ Error in AI first reply:",
+                            err.message
+                        );
+                    }
+                }
+            } else if (contra_user_id) {
+                const messageOriginal = issue.contra_first_message;
+                if (messageOriginal) {
+                    const messageTranslated = await translateToEnglish(
+                        messageOriginal
+                    );
+                    await DebateModel.sendMessage({
+                        sessionId: session.id,
+                        senderUserId: contra_user_id,
+                        senderRole: "contra",
+                        messageOriginal,
+                        messageTranslated,
+                    });
+                }
+            }
 
             return res.status(201).json({
                 status: "success",
@@ -89,9 +164,7 @@ const DebateController = {
                 });
             }
 
-            const messageTranslated = await translateToEnglish(
-                messageOriginal
-            );
+            const messageTranslated = await translateToEnglish(messageOriginal);
             const userMessage = await DebateModel.sendMessage({
                 sessionId,
                 senderUserId,
@@ -100,21 +173,33 @@ const DebateController = {
                 messageTranslated,
             });
 
+            let analysisScore = null;
+            try {
+                const flaskRes = await axios.post(
+                    "http://localhost:5000/assess",
+                    {
+                        argument: messageOriginal,
+                    }
+                );
+                const score = flaskRes.data?.scores?.final;
+                analysisScore = Math.max(1, Math.min(100, score));
+            } catch (err) {
+                console.error("Flask analysis error:", err.message);
+            }
+
             if (req.io) {
-                req.io
-                    .to(sessionId)
-                    .emit("receiveMessage", { message: userMessage });
+                req.io.to(sessionId).emit("receiveMessage", {
+                    message: userMessage,
+                });
             }
 
             if (session.is_vs_ai) {
-                const messageInEnglish = await translateToEnglish(
-                    messageOriginal
-                );
-                const aiResult = await getAIResponse(messageInEnglish);
+                const aiInput = await translateToEnglish(messageOriginal);
+                const aiRes = await getAIResponse(aiInput);
                 const aiOriginal =
-                    aiResult.content || "Sorry, We can't reply at this time..";
+                    aiRes.content || "Sorry, We can't reply at this time..";
                 const aiTranslated = await translateToIndonesian(aiOriginal);
-                
+
                 const aiRole = senderRole === "pro" ? "contra" : "pro";
 
                 const aiMessage = await DebateModel.sendMessage({
@@ -125,23 +210,40 @@ const DebateController = {
                     messageTranslated: aiTranslated,
                 });
 
+                let aiAnalysisScore = null;
+                try {
+                    const flaskRes = await axios.post(
+                        "http://localhost:5000/assess",
+                        {
+                            argument: aiOriginal,
+                        }
+                    );
+                    const score = flaskRes.data?.scores?.final;
+                    aiAnalysisScore = Math.max(1, Math.min(100, score));
+                } catch (err) {
+                    console.error("Flask analysis error (AI):", err.message);
+                }
+
                 if (req.io) {
-                    req.io
-                        .to(sessionId)
-                        .emit("receiveMessage", { message: aiMessage });
+                    req.io.to(sessionId).emit("receiveMessage", {
+                        message: aiMessage,
+                    });
                 }
 
                 return res.status(201).json({
                     status: "success",
                     message: "AI responded",
-                    data: [userMessage, aiMessage],
+                    data: [
+                        { ...userMessage, analysisScore },
+                        { ...aiMessage, analysisScore: aiAnalysisScore },
+                    ],
                 });
             }
 
             return res.status(201).json({
                 status: "success",
                 message: "Message sent successfully",
-                data: userMessage,
+                data: { ...userMessage, analysisScore },
             });
         } catch (error) {
             console.error("Error sending message:", error);
@@ -244,4 +346,3 @@ const DebateController = {
 };
 
 module.exports = DebateController;
-

@@ -8,6 +8,8 @@ exports.up = (pgm) => {
         description: { type: "text", notNull: true },
         contra_description: { type: "text", notNull: false },
         pro_description: { type: "text", notNull: false },
+        pro_first_message: { type: "text", notNull: false },
+        contra_first_message: { type: "text", notNull: false },
         image: { type: "varchar(255)", notNull: false },
         created_at: {
             type: "timestamp",
