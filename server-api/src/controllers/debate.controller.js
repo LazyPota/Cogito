@@ -245,3 +245,4 @@ const DebateController = {
 };
 
 module.exports = DebateController;
+
